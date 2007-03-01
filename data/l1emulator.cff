@@ -3,8 +3,9 @@ include "L1Trigger/Configuration/data/l1muon.cff"
 
 include "L1Trigger/Configuration/data/l1calo.cff"
 
-include "L1Trigger/GlobalTrigger/data/L1GtEmul.cfi"
+include "L1Trigger/GlobalTrigger/data/l1gt.cfi"
 
 include "L1Trigger/L1ExtraFromDigis/data/l1extra.cff"
 
-sequence l1emulator = { l1calo, l1muon, L1GtEmul, l1extra }
+sequence l1emulator = { l1calo, l1muon, l1gt, l1extra }
+

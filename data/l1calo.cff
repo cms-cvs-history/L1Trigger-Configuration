@@ -16,6 +16,6 @@
    include "L1Trigger/RegionalCaloTrigger/data/L1RCTRegionSumsEmCands.cfi"
  
    # GCT
-   include "L1Trigger/GlobalCaloTrigger/data/L1GctEmuDigis.cfi"
+   include "L1Trigger/GlobalCaloTrigger/data/gct.cfi"
 
-   sequence L1CaloEmulDigis = { ecalTriggerPrimitiveDigis, hcalTriggerPrimitiveDigis, L1RCTRegionSumsEmCands, L1GctEmulDigis }
+   sequence l1calo = { ecalTriggerPrimitiveDigis, hcalTriggerPrimitiveDigis, L1RCTRegionSumsEmCands, gct }
