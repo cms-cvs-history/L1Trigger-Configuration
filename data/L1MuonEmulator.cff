@@ -1,0 +1,31 @@
+
+include "Geometry/CSCGeometry/data/cscGeometry.cfi"
+include "Geometry/DTGeometry/data/dtGeometry.cfi"
+include "Geometry/RPCGeometry/data/rpcGeometry.cfi"
+
+
+# CSC Trigger Primitives
+#=======================
+include "L1Trigger/CSCTriggerPrimitives/data/L1CscTpgEmulator.cfi"
+
+# CSC Track Finder
+#================
+include "L1Trigger/CSCTrackFinder/data/L1CscTfEmulator.cfi"
+
+# DT Trigger Primitives
+include "L1Trigger/DTTrigger/data/L1DtTpgEmulator.cfi"
+
+# DT Track Finder
+include "L1Trigger/DTTrackFinder/data/L1DtTfEmulator.cfi"
+
+# RPC Trigger
+#================
+include "L1Trigger/RPCTrigger/data/L1RpcEmulator.cfi"
+
+# Global Muon Trigger
+#================
+include "L1Trigger/GlobalMuonTrigger/data/L1GmtEmulator.cfi"
+
+sequence L1CscEmulator = { L1CscTpgEmulator, L1CscTfEmulator}
+sequence L1DtEmulator = { L1DtTpgEmulator, L1DtTfEmulator}
+sequence L1MuonEmulator = { L1CscEmulator, L1DtEmulator, L1RpcEmulator, L1GmtEmulator }
