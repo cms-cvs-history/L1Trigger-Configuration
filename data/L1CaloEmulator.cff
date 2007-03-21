@@ -13,9 +13,9 @@
    include "L1Trigger/L1ScalesProducers/data/L1ScalesRecords.cff"
 
    # RCT
-   include "L1Trigger/RegionalCaloTrigger/data/L1RctEmulator.cfi"
+   include "L1Trigger/RegionalCaloTrigger/data/L1RCTRegionSumEmCands.cfi"
  
    # GCT
-   include "L1Trigger/GlobalCaloTrigger/data/L1GctEmulator.cfi"
+   include "L1Trigger/GlobalCaloTrigger/data/L1GctEmuDigis.cfi"
 
-   sequence l1Calo = { ecalTriggerPrimitiveDigis, hcalTriggerPrimitiveDigis, L1RctEmulator, L1GctEmulator }
+   sequence L1CaloEmulator = { ecalTriggerPrimitiveDigis, hcalTriggerPrimitiveDigis, L1RCTRegionSumsEmCands, L1GctEmuDigis }

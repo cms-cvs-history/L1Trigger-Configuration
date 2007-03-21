@@ -1,0 +1,18 @@
+# Full Event content 
+block L1T_FEVT = {
+  untracked vstring outputCommands = {
+   }		
+}	
+
+# RECO content
+block L1T_RECO = {
+  untracked vstring outputCommands = {
+  }	
+}	
+
+# AOD content
+block L1T_AOD = {
+  untracked vstring outputCommands = {
+  }
+}
+
