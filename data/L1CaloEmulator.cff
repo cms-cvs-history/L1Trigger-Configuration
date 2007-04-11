@@ -9,13 +9,15 @@
    include "CalibCalorimetry/Configuration/data/Hcal_FakeConditions.cff"
 
    # Trigger configuration
-   include "L1Trigger/L1ScalesProducers/data/L1Scales.cfi"
-   include "L1Trigger/L1ScalesProducers/data/L1ScalesRecords.cff"
+   include "L1TriggerConfig/L1ScalesProducers/data/L1Scales.cfi"
+   include "L1TriggerConfig/L1ScalesProducers/data/L1ScalesRecords.cff"
+   include "L1TriggerConfig/GctConfigProducers/data/GctConfig.cfi"
+#   include "L1TriggerConfig/GctConfigProducers/data/GctConfigRecords.cff"
 
    # RCT
-   include "L1Trigger/RegionalCaloTrigger/data/L1RCTRegionSumEmCands.cfi"
+   include "L1Trigger/RegionalCaloTrigger/data/L1RctEmulDigis.cfi"
  
    # GCT
-   include "L1Trigger/GlobalCaloTrigger/data/L1GctEmuDigis.cfi"
+   include "L1Trigger/GlobalCaloTrigger/data/L1GctEmulDigis.cfi"
 
-   sequence L1CaloEmulator = { ecalTriggerPrimitiveDigis, hcalTriggerPrimitiveDigis, L1RCTRegionSumsEmCands, L1GctEmuDigis }
+   sequence L1CaloEmulator = { ecalTriggerPrimitiveDigis, hcalTriggerPrimitiveDigis, l1RctEmulDigis, l1GctEmulDigis }
