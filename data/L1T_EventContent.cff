@@ -1,17 +1,17 @@
 # Full Event content 
-block L1T_FEVT = {
+block L1TriggerFEVT = {
   untracked vstring outputCommands = {
-   }		
+  }		
 }	
 
 # RECO content
-block L1T_RECO = {
+block L1TriggerRECO = {
   untracked vstring outputCommands = {
   }	
 }	
 
 # AOD content
-block L1T_AOD = {
+block L1TriggerAOD = {
   untracked vstring outputCommands = {
   }
 }

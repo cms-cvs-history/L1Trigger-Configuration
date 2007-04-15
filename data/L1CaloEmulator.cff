@@ -1,6 +1,6 @@
 
    # L1 Configuration
-   include "L1TriggerConfig/L1ScalesProducers/data/L1CaloScales.cff"
+   include "L1TriggerConfig/L1ScalesProducers/data/L1CaloScalesConfig.cff"
 
    # ECAL TPG
    include "SimCalorimetry/EcalTrigPrimProducers/data/ecalTriggerPrimitiveDigis.cff"
