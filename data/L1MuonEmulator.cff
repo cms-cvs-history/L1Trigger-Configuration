@@ -1,34 +1,33 @@
 
-include "Geometry/CSCGeometry/data/cscGeometry.cfi"
+include "Geometry/MuonCommonData/data/muonIdealGeometryXML.cfi"
+
+# L1 Configuration
+include "L1TriggerConfig/L1ScalesProducers/data/L1MuTriggerScalesConfig.cff"
+include "L1TriggerConfig/L1ScalesProducers/data/L1MuGMTScalesConfig.cff"
+
+
+# DT Trigger
 include "Geometry/DTGeometry/data/dtGeometry.cfi"
-include "Geometry/RPCGeometry/data/rpcGeometry.cfi"
+include "L1Trigger/DTTrigger/data/l1DTTPGEmulDigis.cfi"
+include "L1TriggerConfig/DTTPGConfigProducers/data/L1DTTPGConfig.cff"
 
-# DT Trigger Primitives
-include "L1Trigger/DTTrigger/data/dttpgprod.cfi"
+include "L1Trigger/DTTrackFinder/data/l1DttfEmulDigis.cfi"
 
-# DT Track Finder
-module dttf = DTTrackFinder{
-#use default path
-//  untracked string lutdir = "L1Trigger/DTTrackFinder/parameters/"
-}
 
-# CSC Trigger Primitives
-#=======================
-include "L1Trigger/CSCTriggerPrimitives/data/CSCTriggerPrimitivesProducer.cfi"
+# CSC Trigger
+#include "Geometry/CSCGeometry/data/cscGeometry.cfi"
+#include "L1Trigger/CSCCommonTrigger/data/CSCCommonTrigger.cfi"
+#include "L1Trigger/CSCTriggerPrimitives/data/cscTriggerPrimitiveDigis.cfi"
+#include "L1Trigger/CSCTrackFinder/data/l1CscTfEmulDigis.cfi"
 
-# CSC Track Finder
-#================
-include "L1Trigger/CSCTrackFinder/data/CSCTrackFinder.cfi"
 
 # RPC Trigger
-#================
-include "L1Trigger/RPCTrigger/data/RPCTrigger.cfi"
+#include "Geometry/RPCGeometry/data/rpcGeometry.cfi"
+#include "L1Trigger/RPCTrigger/data/l1RpcEmulDigis.cfi"
+
 
 # Global Muon Trigger
-#================
-include "L1Trigger/GlobalMuonTrigger/data/gmt.cfi"
+include "L1Trigger/GlobalMuonTrigger/data/l1GmtEmulDigis.cfi"
 
-sequence tpg = {lctproducer, dttpgprod}
-sequence tf = {csc_tf_cands, dttf}
-sequence l1muregional = { tpg, tf, rpctrig }
-sequence L1MuonEmulator = { l1muregional, gmt }
+
+sequence L1MuonEmulator = { l1DTTPGEmulDigis, l1DttfEmulDigis, l1GmtEmulDigis }
