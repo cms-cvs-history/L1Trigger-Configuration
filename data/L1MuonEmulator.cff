@@ -24,14 +24,14 @@ include "L1Trigger/CSCTrackFinder/data/l1CscTfEmulDigis.cfi"
 
 # RPC Trigger
 include "Geometry/RPCGeometry/data/rpcGeometry.cfi"
-#include "L1Trigger/RPCTrigger/data/l1RpcEmulDigis.cfi"
+include "L1Trigger/RPCTrigger/data/l1RpcEmulDigis.cfi"
 
 
 # Global Muon Trigger
 include "L1Trigger/GlobalMuonTrigger/data/l1GmtEmulDigis.cfi"
 
-sequence l1CSCEmulator = { l1CscTpgEmulDigis,l1CscTfTrackEmulDigis, l1CscTfEmulDigis }
-sequence l1DTEmulator = { l1DTTPGEmulDigis, l1DttfEmulDigis }
-#sequence l1RPCEMulator = { l1RpcEmulDigis }
+sequence l1CscEmulator = { l1CscTpgEmulDigis,l1CscTfTrackEmulDigis, l1CscTfEmulDigis }
+sequence l1DtEmulator = { l1DTTPGEmulDigis, l1DttfEmulDigis }
+sequence l1RpcEmulator = { l1RpcEmulDigis }
 
-sequence l1MuonEmuator = { l1CSCEmulator, l1DTEmulator, l1GmtEmulDigis }
+sequence l1MuonEmuator = { l1CscEmulator, l1DtEmulator, l1RpcEmulator, l1GmtEmulDigis }
