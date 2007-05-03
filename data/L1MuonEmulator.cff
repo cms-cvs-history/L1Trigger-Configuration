@@ -15,14 +15,15 @@ include "L1Trigger/DTTrackFinder/data/l1DttfEmulDigis.cfi"
 
 
 # CSC Trigger
-#include "Geometry/CSCGeometry/data/cscGeometry.cfi"
-#include "L1Trigger/CSCCommonTrigger/data/CSCCommonTrigger.cfi"
-#include "L1Trigger/CSCTriggerPrimitives/data/cscTriggerPrimitiveDigis.cfi"
-#include "L1Trigger/CSCTrackFinder/data/l1CscTfEmulDigis.cfi"
+include "Geometry/CSCGeometry/data/cscGeometry.cfi"
+include "L1Trigger/CSCCommonTrigger/data/CSCCommonTrigger.cfi"
+include "L1Trigger/CSCTriggerPrimitives/data/l1CscTpgEmulDigis.cfi"
+include "L1Trigger/CSCTrackFinder/data/l1CscTfTrackEmulDigis.cfi"
+include "L1Trigger/CSCTrackFinder/data/l1CscTfEmulDigis.cfi"
 
 
 # RPC Trigger
-#include "Geometry/RPCGeometry/data/rpcGeometry.cfi"
+include "Geometry/RPCGeometry/data/rpcGeometry.cfi"
 #include "L1Trigger/RPCTrigger/data/l1RpcEmulDigis.cfi"
 
 
