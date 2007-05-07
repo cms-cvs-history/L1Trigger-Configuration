@@ -5,7 +5,7 @@ include "L1Trigger/Configuration/data/L1CaloEmulator.cff"
 
 #include "L1Trigger/GlobalTrigger/data/l1GtEmulDigis.cfi"
 
-include "L1Trigger/L1ExtraFromDigis/data/l1extra.cff"
+include "L1Trigger/L1ExtraFromDigis/data/l1extraParticles.cfi"
 
-sequence L1Emulator = { L1CaloEmulator, L1MuonEmulator, l1extra }
+sequence L1Emulator = { L1CaloEmulator, L1MuonEmulator, l1extraParticles }
 
