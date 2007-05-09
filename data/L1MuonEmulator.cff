@@ -1,6 +1,4 @@
 
-include "Geometry/MuonCommonData/data/muonIdealGeometryXML.cfi"
-
 # L1 Configuration
 include "L1TriggerConfig/L1ScalesProducers/data/L1MuTriggerScalesConfig.cff"
 include "L1TriggerConfig/L1ScalesProducers/data/L1MuGMTScalesConfig.cff"
