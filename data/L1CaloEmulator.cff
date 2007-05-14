@@ -1,6 +1,7 @@
 
    # L1 Configuration
-   include "L1TriggerConfig/L1ScalesProducers/data/L1CaloScalesConfig.cff"
+   include "L1TriggerConfig/L1ScalesProducers/data/L1ScalesRecords.cff"
+   include "L1TriggerConfig/L1ScalesProducers/data/L1Scales.cfi"
 
    # ECAL TPG
    include "SimCalorimetry/EcalTrigPrimProducers/data/ecalTriggerPrimitiveDigis.cff"
@@ -12,10 +13,13 @@
    include "CalibCalorimetry/Configuration/data/Hcal_FakeConditions.cff"
 
    # RCT
-   include "L1Trigger/RegionalCaloTrigger/data/l1RctEmulDigis.cfi"
+   include "L1Trigger/RegionalCaloTrigger/data/L1RCTRegionSumsEmCands.cfi"
  
    # GCT
    include "L1Trigger/GlobalCaloTrigger/data/l1GctEmulDigis.cfi"
    include "L1TriggerConfig/GctConfigProducers/data/L1GctConfig.cff"
+   include "L1TriggerConfig/GctConfigProducers/data/l1GctConfig.cfi"
 
-   sequence L1CaloEmulator = { ecalTriggerPrimitiveDigis, hcalTriggerPrimitiveDigis, l1RctEmulDigis, l1GctEmulDigis }
+   replace l1GctEmulDigis.inputLabel = L1RCTRegionSumsEmCands
+
+   sequence L1CaloEmulator = { ecalTriggerPrimitiveDigis, hcalTriggerPrimitiveDigis, L1RCTRegionSumsEmCands, l1GctEmulDigis }
