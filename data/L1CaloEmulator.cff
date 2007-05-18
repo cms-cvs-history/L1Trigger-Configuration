@@ -3,8 +3,8 @@
    include "L1TriggerConfig/L1ScalesProducers/data/L1CaloScalesConfig.cff"
 
    # ECAL TPG
-   include "SimCalorimetry/EcalTrigPrimProducers/data/ecalTriggerPrimitiveDigis.cff"
-   include "CalibCalorimetry/Configuration/data/Ecal_FakeConditions.cff"
+#   include "SimCalorimetry/EcalTrigPrimProducers/data/ecalTriggerPrimitiveDigis.cff"
+#   include "CalibCalorimetry/Configuration/data/Ecal_FakeConditions.cff"
 
    # HCAL TPG
    include "SimCalorimetry/HcalTrigPrimProducers/data/hcaltpdigi.cff"
@@ -18,4 +18,4 @@
    include "L1Trigger/GlobalCaloTrigger/data/l1GctEmulDigis.cfi"
    include "L1TriggerConfig/GctConfigProducers/data/L1GctConfig.cff"
 
-   sequence L1CaloEmulator = { ecalTriggerPrimitiveDigis, hcalTriggerPrimitiveDigis, l1RctEmulDigis, l1GctEmulDigis }
+   sequence L1CaloEmulator = { hcalTriggerPrimitiveDigis, l1RctEmulDigis, l1GctEmulDigis }
