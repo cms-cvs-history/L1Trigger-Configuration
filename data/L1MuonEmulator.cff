@@ -32,4 +32,4 @@ sequence l1CscEmulator = { l1CscTpgEmulDigis,l1CscTfTrackEmulDigis, l1CscTfEmulD
 sequence l1DtEmulator = { l1DTTPGEmulDigis, l1DttfEmulDigis }
 sequence l1RpcEmulator = { l1RpcEmulDigis }
 
-sequence l1MuonEmuator = { l1CscEmulator, l1DtEmulator, l1RpcEmulator, l1GmtEmulDigis }
+sequence L1MuonEmuator = { l1CscEmulator, l1DtEmulator, l1RpcEmulator, l1GmtEmulDigis }
