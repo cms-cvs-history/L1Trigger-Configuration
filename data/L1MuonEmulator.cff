@@ -22,6 +22,7 @@ include "L1Trigger/CSCTrackFinder/data/l1CscTfEmulDigis.cfi"
 
 # RPC Trigger
 include "Geometry/RPCGeometry/data/rpcGeometry.cfi"
+include "L1TriggerConfig/RPCTriggerConfig/data/RPCPatSource.cfi"
 include "L1Trigger/RPCTrigger/data/l1RpcEmulDigis.cfi"
 
 
@@ -32,4 +33,4 @@ sequence l1CscEmulator = { l1CscTpgEmulDigis,l1CscTfTrackEmulDigis, l1CscTfEmulD
 sequence l1DtEmulator = { l1DTTPGEmulDigis, l1DttfEmulDigis }
 sequence l1RpcEmulator = { l1RpcEmulDigis }
 
-sequence L1MuonEmulator = { l1CscEmulator, l1DtEmulator, l1RpcEmulator, l1GmtEmulDigis }
+sequence L1MuonEmulator = { l1DtEmulator, l1CscEmulator, l1RpcEmulator, l1GmtEmulDigis }
