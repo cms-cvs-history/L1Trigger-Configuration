@@ -5,6 +5,7 @@ include "L1TriggerConfig/L1ScalesProducers/data/L1MuGMTScalesConfig.cff"
 
 
 # DT Trigger
+es_module = MuonNumberingInitialization { }
 include "Geometry/DTGeometry/data/dtGeometry.cfi"
 include "L1Trigger/DTTrigger/data/l1DTTPGEmulDigis.cfi"
 include "L1TriggerConfig/DTTPGConfigProducers/data/L1DTTPGConfig.cff"
