@@ -13,7 +13,7 @@ block L1TriggerFEVT = {
     "keep *_l1RpcEmulDigis_*_*",
     "keep *_l1GmtEmulDigis_*_*",
     "keep *_l1GtEmulDigis_*_*",
-    "keep *_l1ExtraParticles_*_*"
+    "keep *_l1extraParticles_*_*"
   }		
 }	
 
@@ -32,14 +32,14 @@ block L1TriggerRECO = {
     "keep *_l1RpcEmulDigis_*_*",
     "keep *_l1GmtEmulDigis_*_*",
     "keep *_l1GtEmulDigis_*_*",
-    "keep *_l1ExtraParticles_*_*"
+    "keep *_l1extraParticles_*_*"
   }	
 }	
 
 # AOD content
 block L1TriggerAOD = {
   untracked vstring outputCommands = {
-    "keep *_l1ExtraParticles_*_*"
+    "keep *_l1extraParticles_*_*"
   }
 }
 
