@@ -5,26 +5,33 @@ include "L1TriggerConfig/L1ScalesProducers/data/L1MuGMTScalesConfig.cff"
 
 
 # DT Trigger
+es_module = MuonNumberingInitialization { }
 include "Geometry/DTGeometry/data/dtGeometry.cfi"
-include "L1Trigger/DTTrigger/data/dttpgprod.cfi"
-include "L1Trigger/DTTrigger/data/dttpg_conf.cff"
+include "L1Trigger/DTTrigger/data/l1DTTPGEmulDigis.cfi"
+include "L1TriggerConfig/DTTPGConfigProducers/data/L1DTTPGConfig.cff"
+
 include "L1Trigger/DTTrackFinder/data/l1DttfEmulDigis.cfi"
+
 
 # CSC Trigger
 include "Geometry/CSCGeometry/data/cscGeometry.cfi"
 include "L1Trigger/CSCCommonTrigger/data/CSCCommonTrigger.cfi"
-include "L1Trigger/CSCTriggerPrimitives/data/CSCTriggerPrimitivesProducer.cfi"
-include "L1Trigger/CSCTrackFinder/data/CSCTrackFinder.cfi"
+include "L1Trigger/CSCTriggerPrimitives/data/l1CscTpgEmulDigis.cfi"
+include "L1Trigger/CSCTrackFinder/data/l1CscTfTrackEmulDigis.cfi"
+include "L1Trigger/CSCTrackFinder/data/l1CscTfEmulDigis.cfi"
 
 
 # RPC Trigger
 include "Geometry/RPCGeometry/data/rpcGeometry.cfi"
 include "L1TriggerConfig/RPCTriggerConfig/data/RPCPatSource.cfi"
-include "L1Trigger/RPCTrigger/data/RPCTrigger.cfi"
+include "L1Trigger/RPCTrigger/data/l1RpcEmulDigis.cfi"
 
 
 # Global Muon Trigger
 include "L1Trigger/GlobalMuonTrigger/data/l1GmtEmulDigis.cfi"
 
+sequence l1CscEmulator = { l1CscTpgEmulDigis,l1CscTfTrackEmulDigis, l1CscTfEmulDigis }
+sequence l1DtEmulator = { l1DTTPGEmulDigis, l1DttfEmulDigis }
+sequence l1RpcEmulator = { l1RpcEmulDigis }
 
-sequence L1MuonEmulator = { dttpgprod, l1DttfEmulDigis, lctproducer, l1csctracks, csctfmuonsorter, rpctrig, l1GmtEmulDigis }
+sequence L1MuonEmulator = { l1DtEmulator, l1CscEmulator, l1RpcEmulator, l1GmtEmulDigis }
