@@ -5,10 +5,10 @@ include "L1TriggerConfig/L1ScalesProducers/data/L1MuGMTScalesConfig.cff"
 
 
 # DT Trigger
+include "Geometry/MuonNumbering/data/muonNumberingInitialization.cfi"
 include "Geometry/DTGeometry/data/dtGeometry.cfi"
 include "L1Trigger/DTTrigger/data/l1DTTPGEmulDigis.cfi"
 include "L1TriggerConfig/DTTPGConfigProducers/data/L1DTTPGConfig.cff"
-
 include "L1Trigger/DTTrackFinder/data/l1DttfEmulDigis.cfi"
 
 
