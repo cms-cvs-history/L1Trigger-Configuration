@@ -1,4 +1,7 @@
 
+   include "Geometry/CaloEventSetup/data/CaloGeometry.cff"
+   include "Geometry/CaloEventSetup/data/EcalTrigTowerConstituents.cfi"
+
    # ECAL TPG
    include "Geometry/EcalMapping/data/EcalMapping.cfi"
    include "SimCalorimetry/EcalTrigPrimProducers/data/ecalTriggerPrimitiveDigis.cff"

@@ -1,4 +1,18 @@
-void validation()
+// l1validation.C
+//
+// Produces a set of standard plots for L1 Emulator validation
+// 
+// Expects the following input files :
+//   single_mu.root
+//   single_e.root
+//   single_pi.root
+//   H_4mu.root
+//   H_2gamma.root
+//   H_2tau.root
+//   ZprimeDijets.root
+//
+
+void l1validation()
 {
 
   // Postscript file
