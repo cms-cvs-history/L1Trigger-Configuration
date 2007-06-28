@@ -7,5 +7,16 @@ include "L1Trigger/GlobalTrigger/data/l1GtEmulDigis.cfi"
 
 include "L1Trigger/L1ExtraFromDigis/data/l1extraParticles.cfi"
 
+   replace l1extraParticles.muonSource = l1GmtEmulDigis
+   replace l1extraParticles.isolatedEmSource = l1GctEmulDigis:isoEm
+   replace l1extraParticles.nonIsolatedEmSource = l1GctEmulDigis:nonIsoEm
+   replace l1extraParticles.forwardJetSource = l1GctEmulDigis:forJets
+   replace l1extraParticles.centralJetSource = l1GctEmulDigis:cenJets
+   replace l1extraParticles.tauJetSource = l1GctEmulDigis:tauJets
+   replace l1extraParticles.etTotalSource = l1GctEmulDigis
+   replace l1extraParticles.etHadSource = l1GctEmulDigis
+   replace l1extraParticles.etMissSource = l1GctEmulDigis
+
+
 sequence l1emulator = { l1calo, l1muon, l1extraParticles }
 
