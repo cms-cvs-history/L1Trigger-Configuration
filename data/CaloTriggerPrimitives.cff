@@ -10,7 +10,6 @@
 
    # HCAL TPG
    include "SimCalorimetry/HcalTrigPrimProducers/data/hcaltpdigi.cff"
-   include "SimCalorimetry/HcalTrigPrimProducers/data/hcaltpdigi.cfi"
    include "CalibCalorimetry/Configuration/data/Hcal_FakeConditions.cff"
 
    sequence caloTriggerPrimitives = { ecalTriggerPrimitiveDigis, hcalTriggerPrimitiveDigis }
