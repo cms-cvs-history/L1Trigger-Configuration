@@ -29,8 +29,8 @@ include "L1Trigger/RPCTrigger/data/l1RpcEmulDigis.cfi"
 # Global Muon Trigger
 include "L1Trigger/GlobalMuonTrigger/data/l1GmtEmulDigis.cfi"
 
-sequence l1CscEmulator = { l1CscTpgEmulDigis,l1CscTfTrackEmulDigis, l1CscTfEmulDigis }
-sequence l1DtEmulator = { l1DTTPGEmulDigis, l1DttfEmulDigis }
-sequence l1RpcEmulator = { l1RpcEmulDigis }
+sequence l1MuonTriggerPrimitives = { l1CscTpgEmulDigis, l1DTTPGEmulDigis }
+sequence l1MuonTrackFinders = { l1CscTfTrackEmulDigis, l1CscTfEmulDigis, l1DttfEmulDigis }
 
-sequence L1MuonEmulator = { l1DtEmulator, l1CscEmulator, l1RpcEmulator, l1GmtEmulDigis }
+sequence L1MuonEmulator = { l1MuonTriggerPrimitives, l1MuonTrackFinders, l1RpcEmulDigis, l1GmtEmulDigis }
+
