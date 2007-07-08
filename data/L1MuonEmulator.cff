@@ -27,6 +27,7 @@ include "L1Trigger/RPCTrigger/data/l1RpcEmulDigis.cfi"
 
 
 # Global Muon Trigger
+include "L1TriggerConfig/GMTConfigProducers/data/L1MuGMTParametersConfig.cff"
 include "L1Trigger/GlobalMuonTrigger/data/l1GmtEmulDigis.cfi"
 
 sequence l1MuonTriggerPrimitives = { l1CscTpgEmulDigis, l1DTTPGEmulDigis }
