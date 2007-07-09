@@ -10,4 +10,4 @@
    include "L1Trigger/GlobalCaloTrigger/data/l1GctEmulDigis.cfi"
    include "L1TriggerConfig/GctConfigProducers/data/L1GctConfig.cff"
 
-   sequence l1calo = { l1RctEmulDigis, l1GctEmulDigis }
+   sequence L1CaloEmulator = { l1RctEmulDigis, l1GctEmulDigis }

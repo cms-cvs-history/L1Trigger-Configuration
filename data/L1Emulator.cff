@@ -7,5 +7,5 @@ include "L1Trigger/GlobalTrigger/data/l1GtEmulDigis.cfi"
 
 include "L1Trigger/L1ExtraFromDigis/data/l1extraParticles.cff"
 
-sequence l1emulator = { l1calo, l1muon, l1extraParticles }
+sequence l1emulator = { L1CaloEmulator, L1MuonEmulator, l1GtEmulDigis, l1extraParticles }
 
