@@ -10,7 +10,7 @@ include "L1Trigger/DTTrigger/data/l1DTTPGEmulDigis.cfi"
 include "L1TriggerConfig/DTTPGConfigProducers/data/L1DTTPGConfig.cff"
 
 include "L1Trigger/DTTrackFinder/data/l1DttfEmulDigis.cfi"
-
+include "L1TriggerConfig/DTTrackFinder/data/L1DTTrackFinderConfig.cff"
 
 # CSC Trigger
 include "Geometry/CSCGeometry/data/cscGeometry.cfi"
