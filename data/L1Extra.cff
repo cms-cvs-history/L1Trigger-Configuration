@@ -1,0 +1,6 @@
+
+include "L1Trigger/L1ExtraFromDigis/data/l1extraParticles.cff"
+
+include "L1Trigger/L1ExtraFromDigis/data/l1extraParticleMap.cfi"
+
+sequence L1Extra = { l1extraParticles, l1extraParticleMap }
