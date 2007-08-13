@@ -5,11 +5,9 @@
 // Expects the following input files :
 //   single_mu.root
 //   single_e.root
-//   single_pi.root
-//   H_4mu.root
-//   H_2gamma.root
-//   H_2tau.root
-//   ZprimeDijets.root
+//   single_gam.root
+//   single_pi.root  ?
+//   single_tau.root ?
 //
 
 void l1validation()
@@ -72,36 +70,7 @@ void l1validation()
   // make iso/non-iso sum histograms
   PlotCombinedEff(f,"L1AnalyzerIsoEmMC","L1AnalyzerNonIsoEmMC","", "Eta", "#eta","Efficiency","e"); c1->Update();
 
-  
-  
-  //f->Close();
-
-
-  /// single pion plots ///
-  //  TFile *f = new TFile("single_pi.root");
-  
-
   f->Close();
-  
-  /// H -> 4 mu plots ///
-  //   TFile *f = new TFile("H_4mu.root");
-  
-  //   f->close();
-  
-  /// H -> 2 gamma plots ///
-  //   TFile *f = new TFile("H_2gamma.root");
-  
-  //   f->close();
-  
-  /// H -> 2 tau plots ///
-  //   TFile *f = new TFile("H_2tau.root");
-  
-  //   f->close();
-  
-  /// Z' -> dijets plots ///
-  //   TFile *f = new TFile("ZprimeDijets.root");
-  
-  //   f->close();
   
   ps->Close();
 
