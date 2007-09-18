@@ -16,4 +16,4 @@
   include "L1TriggerConfig/L1ScalesProducers/data/L1MuGMTScalesConfig.cff"
 
   # L1 GT configuration - not available yet
-  # include "L1TriggerConfig/GTConfigProducers/data/L1GTConfig.cff"
+  include "L1TriggerConfig/L1GtConfigProducers/data/L1GtConfig.cff"
