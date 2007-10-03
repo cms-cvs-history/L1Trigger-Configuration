@@ -2,8 +2,8 @@
     # I have to include those two to make sura that system would load all required records.
     # This is the case even with pool DB. Not sure what is correct way to make those
     # records available
-    include "L1TriggerConfig/L1CSCTPConfigProducers/data/L1CSCTriggerPrimitivesConfig.cfi"
-    include "L1TriggerConfig/L1ScalesProducers/data/l1CaloScales.cfi"
+#    include "L1TriggerConfig/L1CSCTPConfigProducers/data/L1CSCTriggerPrimitivesConfig.cfi"
+#    include "L1TriggerConfig/L1ScalesProducers/data/l1CaloScales.cfi"
 
     es_source l1TriggerSource = L1TDBESSource {
         # Connection strings
