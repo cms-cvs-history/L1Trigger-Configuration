@@ -1,2 +1,2 @@
 
-# include special L1 ESSource here when available
+include "CondTools/L1Trigger/data/L1DBESSource.cfi"
