@@ -1,5 +1,17 @@
 #!/bin/sh
 
+# Jim Brooke, 28/11/07
+# mkconfig.sh - create configs to run a job over many datasets
+#
+# Expects a set of files called eg. RelValSingleElectronPt35.txt
+# containing a config file snippet that replaces input files. eg
+#
+# replace PoolSource.fileNames = {
+# '/store/mc/2007/11/19/RelVal-RelValSingleElectronPt35-1195478550/0000/043889D3-4A98-DC11-9446-000423D94A68.root',
+# '/store/mc/2007/11/19/RelVal-RelValSingleElectronPt35-1195478550/0001/083B869C-4A99-DC11-9588-001617DBD5B2.root'
+# }
+#
+
 if [ "$1" = "clean" ]; then
     for file in `ls RelVal*.txt`
       do
@@ -12,8 +24,6 @@ if [ "$1" = "clean" ]; then
 fi
 
 pwd=`pwd`
-
-echo $pwd
 
 # create submit-all script
 touch submitall.sh
