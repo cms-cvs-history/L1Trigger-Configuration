@@ -4,6 +4,7 @@
 
 include "EventFilter/L1GlobalTriggerRawToDigi/data/l1GtUnpack.cfi"
 replace l1GtUnpack.DaqGtInputTag = rawDataCollector
+replace l1GtUnpack.ActiveBoardsMask = 0x0100
 replace l1GtUnpack.UnpackBxInEvent = 1
 
 include "EventFilter/GctRawToDigi/data/l1GctHwDigis.cfi"
@@ -12,6 +13,7 @@ replace l1GctHwDigis.inputLabel = rawDataCollector
 include "L1Trigger/GlobalTrigger/data/l1GtEmulDigis.cfi"
 replace l1GtEmulDigis.GmtInputTag = l1GtUnpack
 replace l1GtEmulDigis.GctInputTag = l1GctHwDigis
+replace l1GtParameters.TotalBxInEvent = 1
 
 include "L1Trigger/L1ExtraFromDigis/data/l1extraParticles.cfi"
 replace l1extraParticles.muonSource = l1GtUnpack
