@@ -55,10 +55,13 @@ cd $pwd/$dataset
 export STAGE_SVCCLASS=default
 cmsRun l1validation.cfg > log
 EOF
+  chmod ugo+x $dataset/batch.sh
   
 # add a line to batch submit
   cat >> submitall.sh<<EOF
-bsub -q1nh $dataset/batch.sh $dataset
+cd $dataset
+bsub -q1nh batch.sh
+cd ..
 EOF
   
 done
