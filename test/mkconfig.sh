@@ -53,7 +53,7 @@ EOF
 cd $pwd/$dataset
 `scramv1 runtime -sh`
 export STAGE_SVCCLASS=default
-cmsRun l1validation.cfg > log
+cmsRun l1validation.cfg >& log
 EOF
   chmod ugo+x $dataset/batch.sh
   
