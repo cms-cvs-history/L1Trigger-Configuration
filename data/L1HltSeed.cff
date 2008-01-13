@@ -1,7 +1,10 @@
 
+# the sequence to be run in EvF before running any HLT paths
 
-// the sequence to be run in EvF before running any HLT paths
+# Setup
+include "L1Trigger/Configuration/data/L1HltSeedSetup.cff"
 
+# Modules
 module l1GmtEmulDigis = l1GtUnpack from "EventFilter/L1GlobalTriggerRawToDigi/data/l1GtUnpack.cfi"
 replace l1GmtEmulDigis.DaqGtInputTag = rawDataCollector
 replace l1GmtEmulDigis.ActiveBoardsMask = 0x0100
@@ -26,4 +29,5 @@ replace l1extraParticles.etTotalSource = l1GctHwDigis
 replace l1extraParticles.etHadSource = l1GctHwDigis
 replace l1extraParticles.etMissSource = l1GctHwDigis
 
+# the sequence
 sequence L1HltSeed = { l1GmtEmulDigis, l1GctEmulDigis, l1GtEmulDigis, l1extraParticles }

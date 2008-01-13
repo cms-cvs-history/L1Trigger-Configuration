@@ -3,9 +3,7 @@
 # select one of the two lines below
 # By default (17X) take configuration from dummy producers
 
-include "L1Trigger/Configuration/data/L1DummyConfig.cff"
-#include "L1Trigger/Configuration/data/L1DBConfig.cff"
-
+include "L1Trigger/Configuration/data/L1Config.cff"
 
 # Emulator modules
 

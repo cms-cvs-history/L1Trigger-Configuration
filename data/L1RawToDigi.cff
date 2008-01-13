@@ -1,0 +1,20 @@
+
+# CSC TF
+module l1CscTfEmulDigis = csctfunpacker from "EventFilter/CSCTFRawToDigi/data/csctfunpacker.cfi"
+replace l1CscTfEmulDigis.producer = rawDataCollector
+
+# DT TF ???
+module l1DtTfEmulDigis = dttfunpacker from "EventFilter/DTTFRawToDigi/data/dttfunpacker.cfi"
+# no InputTag parameter - hardcoded? getByType?
+
+# RPC ???
+
+# RCT/GCT
+module l1GctEmulDigis = l1GctHwDigis from "EventFilter/GctRawToDigi/data/l1GctHwDigis.cfi"
+replace l1GctEmulDigis.inputLabel = rawDataCollector
+
+# GMT/GT
+module l1GmtEmulDigis = l1GtUnpack from "EventFilter/L1GlobalTriggerRawToDigi/data/l1GtUnpack.cfi"
+replace l1GmtEmulDigis.DaqGtInputTag = rawDataCollector
+
+sequence L1RawToDigi = { l1CscTfEmulDigis & l1DtTfEmulDigis & l1GctEmulDigis & l1GmtEmulDigis }
