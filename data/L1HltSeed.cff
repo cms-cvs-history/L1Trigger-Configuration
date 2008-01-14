@@ -19,15 +19,15 @@ replace l1GtEmulDigis.GctInputTag = l1GctEmulDigis
 replace l1GtParameters.TotalBxInEvent = 1
 
 include "L1Trigger/L1ExtraFromDigis/data/l1extraParticles.cfi"
-replace l1extraParticles.muonSource = l1GtUnpack
-replace l1extraParticles.isolatedEmSource = l1GctHwDigis:isoEm
-replace l1extraParticles.nonIsolatedEmSource = l1GctHwDigis:nonIsoEm
-replace l1extraParticles.forwardJetSource = l1GctHwDigis:forJets
-replace l1extraParticles.centralJetSource = l1GctHwDigis:cenJets
-replace l1extraParticles.tauJetSource = l1GctHwDigis:tauJets
-replace l1extraParticles.etTotalSource = l1GctHwDigis
-replace l1extraParticles.etHadSource = l1GctHwDigis
-replace l1extraParticles.etMissSource = l1GctHwDigis
+replace l1extraParticles.muonSource = l1GmtEmulDigis
+replace l1extraParticles.isolatedEmSource = l1GctEmulDigis:isoEm
+replace l1extraParticles.nonIsolatedEmSource = l1GctEmulDigis:nonIsoEm
+replace l1extraParticles.forwardJetSource = l1GctEmulDigis:forJets
+replace l1extraParticles.centralJetSource = l1GctEmulDigis:cenJets
+replace l1extraParticles.tauJetSource = l1GctEmulDigis:tauJets
+replace l1extraParticles.etTotalSource = l1GctEmulDigis
+replace l1extraParticles.etHadSource = l1GctEmulDigis
+replace l1extraParticles.etMissSource = l1GctEmulDigis
 
 # the sequence
 sequence L1HltSeed = { l1GmtEmulDigis, l1GctEmulDigis, l1GtEmulDigis, l1extraParticles }

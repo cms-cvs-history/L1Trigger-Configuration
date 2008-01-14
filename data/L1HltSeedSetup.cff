@@ -1,5 +1,8 @@
 
 # Dummy configuration
+include "L1TriggerConfig/GctConfigProducers/data/L1GctConfig.cff"
+include "L1TriggerConfig/L1ScalesProducers/data/L1CaloScalesConfig.cff"
+include "L1TriggerConfig/L1GeometryProducers/data/l1CaloGeomConfig.cff"
 include "L1TriggerConfig/L1ScalesProducers/data/L1MuTriggerScalesConfig.cff"
 include "L1TriggerConfig/L1ScalesProducers/data/L1MuGMTScalesConfig.cff"
 include "L1TriggerConfig/L1GtConfigProducers/data/L1GtConfig.cff"
