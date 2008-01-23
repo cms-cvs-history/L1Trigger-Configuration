@@ -1,0 +1,41 @@
+
+# the sequence to be run in EvF before running any HLT paths
+#
+# Jim Brooke, Vasile Ghete
+#
+# NB - contact HLT team when this file is edited
+#      so changes can be mirrored in ConfDB
+
+# Setup
+include "L1Trigger/Configuration/data/L1HltSeedSetup.cff"
+
+# Modules
+module l1GmtEmulDigis = l1GtUnpack from "EventFilter/L1GlobalTriggerRawToDigi/data/l1GtUnpack.cfi"
+replace l1GmtEmulDigis.DaqGtInputTag = rawDataCollector
+replace l1GmtEmulDigis.ActiveBoardsMask = 0x0101
+replace l1GmtEmulDigis.UnpackBxInEvent = 1
+
+module l1GctEmulDigis = l1GctHwDigis from "EventFilter/GctRawToDigi/data/l1GctHwDigis.cfi"
+replace l1GctEmulDigis.inputLabel = rawDataCollector
+
+include "L1Trigger/GlobalTrigger/data/l1GtEmulDigis.cfi"
+replace l1GtEmulDigis.GmtInputTag = l1GmtEmulDigis
+replace l1GtEmulDigis.GctInputTag = l1GctEmulDigis
+#replace l1GtEmulDigis.ProduceL1GtDaqRecord = false
+#replace l1GtEmulDigis.ProduceL1GtEvmRecord = false
+#replace l1GtEmulDigis.WritePsbL1GtDaqRecord = false
+replace l1GtParameters.TotalBxInEvent = 1
+
+include "L1Trigger/L1ExtraFromDigis/data/l1extraParticles.cfi"
+replace l1extraParticles.muonSource = l1GmtEmulDigis
+replace l1extraParticles.isolatedEmSource = l1GctEmulDigis:isoEm
+replace l1extraParticles.nonIsolatedEmSource = l1GctEmulDigis:nonIsoEm
+replace l1extraParticles.forwardJetSource = l1GctEmulDigis:forJets
+replace l1extraParticles.centralJetSource = l1GctEmulDigis:cenJets
+replace l1extraParticles.tauJetSource = l1GctEmulDigis:tauJets
+replace l1extraParticles.etTotalSource = l1GctEmulDigis
+replace l1extraParticles.etHadSource = l1GctEmulDigis
+replace l1extraParticles.etMissSource = l1GctEmulDigis
+
+# the sequence
+sequence L1HltSeed = { l1GmtEmulDigis, l1GctEmulDigis, l1GtEmulDigis, l1extraParticles }
