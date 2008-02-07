@@ -54,7 +54,7 @@ cd $pwd/$dataset
 `scramv1 runtime -sh`
 export STAGE_SVCCLASS=default
 cmsRun l1validation.cfg >& log
-python $CMSSW_BASE/L1Trigger/Configuration/test/l1validation.py l1validation.root
+python $CMSSW_BASE/src/L1Trigger/Configuration/test/l1validation.py l1validation.root
 EOF
   chmod ugo+x $dataset/batch.sh
   
