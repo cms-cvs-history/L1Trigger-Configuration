@@ -4,6 +4,7 @@ import tarfile;
 import shutil;
 
 hfilename = sys.argv[1];
+pfilename = sys.argv[2];
 
 from ROOT import *;
 gSystem.Load("libFWCoreFWLite.so");
@@ -89,7 +90,7 @@ canvas = TCanvas("canvas");
 
 
 # muon resolutions & efficiencies
-basicPlots("muon", "L1AnalyzerMuonMC", "muon");
+#basicPlots("muon", "L1AnalyzerMuonMC", "muon");
 
 # iso EM
 basicPlots("isoem", "L1AnalyzerIsoEmMC", "isoem");
@@ -138,7 +139,7 @@ basicPlots("met", "L1AnalyzerMetMC", "esums");
 
 
 # make tarfile
-t = tarfile.open(name = "plots.tgz", mode = 'w:gz')
+t = tarfile.open(name = pfilename+".tgz", mode = 'w:gz')
 for dir in plotdirs:
 	t.add(dir);
 t.close()
