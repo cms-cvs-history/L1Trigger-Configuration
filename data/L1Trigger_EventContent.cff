@@ -25,7 +25,7 @@ block L1TriggerAOD = {
   }
 }
 
-block L1TriggerFEVTSIMDIGIEventContent = {
+block L1TriggerFEVTDIGI = {
   untracked vstring outputCommands = {
     "keep *_l1RctEmulDigis_*_*",
     "keep *_l1GctEmulDigis_*_*",
