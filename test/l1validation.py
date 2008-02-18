@@ -48,10 +48,10 @@ def plotCombEff(file, dirA, dirB, dirC, sumRef, hist, xLabel, yLabel="Events", O
 			histRefC = file.Get(dirC+"/RefCandidates/"+hist);
 			histRefA.Add(histC);
 	if (histRefA.GetEntries() > 0):
-		histA.Divide(histRef);
-	histRef.GetXaxis().SetTitle(xLabel);
-  	histRef.GetYaxis().SetTitle(yLabel);
-	histRef.Draw(Opt);
+		histA.Divide(histRefA);
+	histRefA.GetXaxis().SetTitle(xLabel);
+  	histRefA.GetYaxis().SetTitle(yLabel);
+	histRefA.Draw(Opt);
 
 # Basic plots
 def basicPlots(obj, dir, plotdir):
