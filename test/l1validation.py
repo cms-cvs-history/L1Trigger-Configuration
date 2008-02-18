@@ -35,6 +35,18 @@ def plotCombEff(file, dirA, dirB, dirC, hist, xLabel, yLabel="Events", Opt=""):
 
 # Basic plots
 def basicPlots(obj, dir, plotdir):
+	plot(hfile,dir+"/L1Candidates/Et","E_{T}","No. of entries");
+	canvas.Update();
+	canvas.Print(plotdir+"/"+obj+"Et.png");
+
+       	plot(hfile,dir+"/L1Candidates/Eta","#eta","No. of entries");
+	canvas.Update();
+	canvas.Print(plotdir+"/"+obj+"Eta.png");
+
+	plot(hfile,dir+"/L1Candidates/Phi","#phi","No. of entries");
+	canvas.Update();
+	canvas.Print(plotdir+"/"+obj+"Phi.png");
+
 	plot(hfile,dir+"/Resolutions/EtRes","(E_{T,L1}-E_{T,Ref})/E_{T,Ref}","No. of entries");
 	canvas.Update();
 	canvas.Print(plotdir+"/"+obj+"EtRes.png");
