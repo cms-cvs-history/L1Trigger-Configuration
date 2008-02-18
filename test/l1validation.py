@@ -18,16 +18,36 @@ def plot(file, hist, xLabel, yLabel="Events", Opt=""):
 	H.GetYaxis().SetTitle(yLabel);
 	H.Draw(Opt);
 
-# Sum two/three L1 histos, divide by ref, and plot
-# Use for eg. total EM efficiency, rather than iso and non-iso separately
-def plotCombEff(file, dirA, dirB, dirC, hist, xLabel, yLabel="Events", Opt=""):
+# Sum two/three L1 histos and plot
+# Use for eg. overall jet Et distribution
+def plotComb(file, dirA, dirB, dirC, hist, xLabel, yLabel="Events", Opt=""):
 	histA = file.Get(dirA+"/L1Candidates/"+hist);
 	histB = file.Get(dirB+"/L1Candidates/"+hist);
+	histA.Add(histB);
 	if (dirC != ""):
 		histC = file.Get(dirC+"/L1Candidates/"+hist);
-	histRef = file.Get(dirA+"/RefCandidates/"+hist);
-	histA.Add(histB);
-	if (histRef.GetEntries() > 0):
+		histA.Add(histC);
+	histRef.GetXaxis().SetTitle(xLabel);
+  	histRef.GetYaxis().SetTitle(yLabel);
+	histRef.Draw(Opt);
+
+# Sum two/three L1 histos, divide by ref, and plot
+# Use for eg. total EM efficiency, rather than iso and non-iso separately
+def plotCombEff(file, dirA, dirB, dirC, hist, sumRef, xLabel, yLabel="Events", Opt=""):
+	histA = file.Get(dirA+"/L1Candidates/"+hist);
+	histB = file.Get(dirB+"/L1Candidates/"+hist);
+       	histA.Add(histB);
+	histRefA = file.Get(dirA+"/RefCandidates/"+hist);
+	if (sumRef):
+		histRefB = file.Get(dirB+"/RefCandidates/"+hist);
+	histRefA.Add(histRefB);
+       	if (dirC != ""):
+		histC = file.Get(dirC+"/L1Candidates/"+hist);
+		histA.Add(histC);
+		if (sumRef):
+			histRefC = file.Get(dirC+"/RefCandidates/"+hist);
+			histRefA.Add(histC);
+	if (histRefA.GetEntries() > 0):
 		histA.Divide(histRef);
 	histRef.GetXaxis().SetTitle(xLabel);
   	histRef.GetYaxis().SetTitle(yLabel);
@@ -111,21 +131,21 @@ basicPlots("isoem", "L1AnalyzerIsoEmMC", "isoem");
 basicPlots("nonisoem", "L1AnalyzerIsoEmMC", "relem");
 
 # combined iso and non-iso EM efficiencies
-plotCombEff(hfile,"L1AnalyzerIsoEmMC","L1AnalyzerNonIsoEmMC","", "Et", "#et","Efficiency","e"); 
+plotCombEff(hfile,"L1AnalyzerIsoEmMC","L1AnalyzerNonIsoEmMC","", false, "Et", "#et","Efficiency","e"); 
 canvas.Update();
 canvas.Print("relem/relemEtEff.png");
 
-plotCombEff(hfile,"L1AnalyzerIsoEmMC","L1AnalyzerNonIsoEmMC","", "Eta", "#eta","Efficiency","e"); 
+plotCombEff(hfile,"L1AnalyzerIsoEmMC","L1AnalyzerNonIsoEmMC","", false, "Eta", "#eta","Efficiency","e"); 
 canvas.Update();
 canvas.Print("relem/relemEtaEff.png");
 
-plotCombEff(hfile,"L1AnalyzerIsoEmMC","L1AnalyzerNonIsoEmMC","", "Phi", "#phi","Efficiency","e"); 
+plotCombEff(hfile,"L1AnalyzerIsoEmMC","L1AnalyzerNonIsoEmMC","", false, "Phi", "#phi","Efficiency","e"); 
 canvas.Update();
 canvas.Print("relem/relemPhiEff.png");
 
 
 # tau
-basicPlots("tau", "L1AnalyzerTauJetsMC", "jet");
+basicPlots("tau", "L1AnalyzerTauJetsMC", "tau");
 
 # cen jet
 basicPlots("cenjet", "L1AnalyzerCenJetsMC", "jet");
@@ -134,15 +154,15 @@ basicPlots("cenjet", "L1AnalyzerCenJetsMC", "jet");
 basicPlots("forjet", "L1AnalyzerCenJetsMC", "jet");
 
 # total jet efficiencies
-plotCombEff(hfile,"L1AnalyzerCenJetsMC","L1AnalyzerTauJetsMC","L1AnalyzerForJetsMC", "Et", "#et","Efficiency","e"); 
+plotCombEff(hfile,"L1AnalyzerCenJetsMC","L1AnalyzerTauJetsMC","L1AnalyzerForJetsMC", true, "Et", "#et","Efficiency","e"); 
 canvas.Update();
 canvas.Print("jet/jetEtEff.png");
 
-plotCombEff(hfile,"L1AnalyzerCenJetsMC","L1AnalyzerTauJetsMC","L1AnalyzerForJetsMC", "Eta", "#eta","Efficiency","e"); 
+plotCombEff(hfile,"L1AnalyzerCenJetsMC","L1AnalyzerTauJetsMC","L1AnalyzerForJetsMC", true, "Eta", "#eta","Efficiency","e"); 
 canvas.Update();
 canvas.Print("jet/jetEtaEff.png");
 
-plotCombEff(hfile,"L1AnalyzerCenJetsMC","L1AnalyzerTauJetsMC","L1AnalyzerForJetsMC", "Phi", "#phi","Efficiency","e"); 
+plotCombEff(hfile,"L1AnalyzerCenJetsMC","L1AnalyzerTauJetsMC","L1AnalyzerForJetsMC", true, "Phi", "#phi","Efficiency","e"); 
 canvas.Update();
 canvas.Print("jet/jetPhiEff.png");
 
