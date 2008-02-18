@@ -33,7 +33,7 @@ def plotComb(file, dirA, dirB, dirC, hist, xLabel, yLabel="Events", Opt=""):
 
 # Sum two/three L1 histos, divide by ref, and plot
 # Use for eg. total EM efficiency, rather than iso and non-iso separately
-def plotCombEff(file, dirA, dirB, dirC, hist, sumRef, xLabel, yLabel="Events", Opt=""):
+def plotCombEff(file, dirA, dirB, dirC, sumRef, hist, xLabel, yLabel="Events", Opt=""):
 	histA = file.Get(dirA+"/L1Candidates/"+hist);
 	histB = file.Get(dirB+"/L1Candidates/"+hist);
        	histA.Add(histB);
