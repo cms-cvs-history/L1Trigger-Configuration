@@ -40,7 +40,7 @@ def plotCombEff(file, dirA, dirB, dirC, sumRef, hist, xLabel, yLabel="Events", O
 	histRefA = file.Get(dirA+"/RefCandidates/"+hist);
 	if (sumRef):
 		histRefB = file.Get(dirB+"/RefCandidates/"+hist);
-	histRefA.Add(histRefB);
+		histRefA.Add(histRefB);
        	if (dirC != ""):
 		histC = file.Get(dirC+"/L1Candidates/"+hist);
 		histA.Add(histC);
