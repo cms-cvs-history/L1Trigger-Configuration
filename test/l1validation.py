@@ -20,12 +20,12 @@ def plot(file, hist, xLabel, yLabel="Events", Opt=""):
 
 # Sum two/three L1 histos and plot
 # Use for eg. overall jet Et distribution
-def plotComb(file, dirA, dirB, dirC, hist, xLabel, yLabel="Events", Opt=""):
-	histA = file.Get(dirA+"/L1Candidates/"+hist);
-	histB = file.Get(dirB+"/L1Candidates/"+hist);
+def plotSum(file, dirA, dirB, dirC, hist, xLabel, yLabel="Events", Opt=""):
+	histA = file.Get(dirA+hist);
+	histB = file.Get(dirB+hist);
 	histA.Add(histB);
 	if (dirC != ""):
-		histC = file.Get(dirC+"/L1Candidates/"+hist);
+		histC = file.Get(dirC+hist);
 		histA.Add(histC);
 	histA.GetXaxis().SetTitle(xLabel);
   	histA.GetYaxis().SetTitle(yLabel);
@@ -105,7 +105,7 @@ def basicPlots(obj, dir, plotdir):
 
 
 # make output directory structure
-plotdirs = ["muon", "isoem", "relem", "tau", "jet", "esums"];
+plotdirs = ["muon", "isoem", "nonisoem", "relem", "tau", "cenjet", "forjet", "jet", "met"];
 for dir in plotdirs:
 	try:
 		os.mkdir(dir);
@@ -127,8 +127,20 @@ canvas = TCanvas("canvas");
 # iso EM
 basicPlots("isoem", "L1AnalyzerIsoEmMC", "isoem");
 
-# non-iso EM
-basicPlots("nonisoem", "L1AnalyzerIsoEmMC", "relem");
+# iso EM
+basicPlots("nonisoem", "L1AnalyzerIsoEmMC", "nonisoem");
+
+# tau jets
+basicPlots("tau", "L1AnalyzerTauJetsMC", "tau");
+
+# cen jets
+basicPlots("cenjet", "L1AnalyzerForJetsMC", "cenjet");
+
+# for jets
+basicPlots("forjet", "L1AnalyzerForJetsMC", "forjet");
+
+# missing Et
+basicPlots("met", "L1AnalyzerMetMC", "met");
 
 # combined iso and non-iso EM efficiencies
 plotCombEff(hfile,"L1AnalyzerIsoEmMC","L1AnalyzerNonIsoEmMC","", false, "Et", "#et","Efficiency","e"); 
@@ -143,33 +155,38 @@ plotCombEff(hfile,"L1AnalyzerIsoEmMC","L1AnalyzerNonIsoEmMC","", false, "Phi", "
 canvas.Update();
 canvas.Print("relem/relemPhiEff.png");
 
+# total jet Et
+plotSum(hfile, "L1AnalyzerCenJetsMC", "L1AnalyzerTauJetsQCDMC","L1AnalyzerForJetsMC","/L1Candidates/Et", "E_{t}","No. of entries","e");
+canvas.Update();
+canvas.Print("jet/jetEt.png");
 
-# tau
-basicPlots("tau", "L1AnalyzerTauJetsMC", "tau");
+# total jet Et resolution
+plotSum(hfile, "L1AnalyzerCenJetsMC", "L1AnalyzerTauJetsQCDMC","L1AnalyzerForJetsMC","/Resolutions/EtRes", "(E_{T,L1}-E_{T,Ref})/E_{T,Ref}","No. of entries","e");
+canvas.Update();
+canvas.Print("jet/jetEtRes.png");
 
-# cen jet
-basicPlots("cenjet", "L1AnalyzerCenJetsMC", "jet");
+# total jet Eta resolution
+plotSum(hfile, "L1AnalyzerCenJetsMC", "L1AnalyzerTauJetsQCDMC","L1AnalyzerForJetsMC","/Resolutions/EtaRes", "(#eta_{L1}-#eta_{Ref})/#eta_{Ref}","No. of entries","e");
+canvas.Update();
+canvas.Print("jet/jetEtaRes.png");
 
-# for jet
-basicPlots("forjet", "L1AnalyzerForJetsMC", "jet");
+# total jet Phi resolution
+plotSum(hfile, "L1AnalyzerCenJetsMC", "L1AnalyzerTauJetsQCDMC","L1AnalyzerForJetsMC","/Resolutions/PhiRes", "(#phi_{L1}-#phi_{Ref})/#phi_{Ref}","No. of entries","e");
+canvas.Update();
+canvas.Print("jet/jetPhiRes.png");
 
 # total jet efficiencies
-plotComb(hfile, "L1AnalyzerCenJetsMC", "L1AnalyzerTauJetsMC","L1AnalyzerForJetsMC","Et", "E_{t}","No. of entries","e");
-
-plotCombEff(hfile,"L1AnalyzerCenJetsMC","L1AnalyzerTauJetsMC","L1AnalyzerForJetsMC", true, "Et", "#et","Efficiency","e"); 
+plotCombEff(hfile,"L1AnalyzerCenJetsMC","L1AnalyzerTauJetsQCDMC","L1AnalyzerForJetsMC", true, "Et", "#et","Efficiency","e"); 
 canvas.Update();
 canvas.Print("jet/jetEtEff.png");
 
-plotCombEff(hfile,"L1AnalyzerCenJetsMC","L1AnalyzerTauJetsMC","L1AnalyzerForJetsMC", true, "Eta", "#eta","Efficiency","e"); 
+plotCombEff(hfile,"L1AnalyzerCenJetsMC","L1AnalyzerTauJetsQCDMC","L1AnalyzerForJetsMC", true, "Eta", "#eta","Efficiency","e"); 
 canvas.Update();
 canvas.Print("jet/jetEtaEff.png");
 
-plotCombEff(hfile,"L1AnalyzerCenJetsMC","L1AnalyzerTauJetsMC","L1AnalyzerForJetsMC", true, "Phi", "#phi","Efficiency","e"); 
+plotCombEff(hfile,"L1AnalyzerCenJetsMC","L1AnalyzerTauJetsQCDMC","L1AnalyzerForJetsMC", true, "Phi", "#phi","Efficiency","e"); 
 canvas.Update();
 canvas.Print("jet/jetPhiEff.png");
-
-# missing Et
-basicPlots("met", "L1AnalyzerMetMC", "esums");
 
 
 # make tarfile
