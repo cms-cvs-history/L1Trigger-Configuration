@@ -27,9 +27,9 @@ def plotComb(file, dirA, dirB, dirC, hist, xLabel, yLabel="Events", Opt=""):
 	if (dirC != ""):
 		histC = file.Get(dirC+"/L1Candidates/"+hist);
 		histA.Add(histC);
-	histRef.GetXaxis().SetTitle(xLabel);
-  	histRef.GetYaxis().SetTitle(yLabel);
-	histRef.Draw(Opt);
+	histA.GetXaxis().SetTitle(xLabel);
+  	histA.GetYaxis().SetTitle(yLabel);
+	histA.Draw(Opt);
 
 # Sum two/three L1 histos, divide by ref, and plot
 # Use for eg. total EM efficiency, rather than iso and non-iso separately
@@ -49,9 +49,9 @@ def plotCombEff(file, dirA, dirB, dirC, sumRef, hist, xLabel, yLabel="Events", O
 			histRefA.Add(histC);
 	if (histRefA.GetEntries() > 0):
 		histA.Divide(histRefA);
-	histRefA.GetXaxis().SetTitle(xLabel);
-  	histRefA.GetYaxis().SetTitle(yLabel);
-	histRefA.Draw(Opt);
+	histA.GetXaxis().SetTitle(xLabel);
+  	histA.GetYaxis().SetTitle(yLabel);
+	histA.Draw(Opt);
 
 # Basic plots
 def basicPlots(obj, dir, plotdir):
@@ -151,9 +151,11 @@ basicPlots("tau", "L1AnalyzerTauJetsMC", "tau");
 basicPlots("cenjet", "L1AnalyzerCenJetsMC", "jet");
 
 # for jet
-basicPlots("forjet", "L1AnalyzerCenJetsMC", "jet");
+basicPlots("forjet", "L1AnalyzerForJetsMC", "jet");
 
 # total jet efficiencies
+plotComb(hfile, "L1AnalyzerCenJetsMC", "L1AnalyzerTauJetsMC","L1AnalyzerForJetsMC","Et", "E_{t}","No. of entries","e");
+
 plotCombEff(hfile,"L1AnalyzerCenJetsMC","L1AnalyzerTauJetsMC","L1AnalyzerForJetsMC", true, "Et", "#et","Efficiency","e"); 
 canvas.Update();
 canvas.Print("jet/jetEtEff.png");
