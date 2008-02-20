@@ -4,7 +4,6 @@ block L1TriggerFEVT = {
     "keep *_gtDigis_*_*",
     "keep *_l1GtObjectMap_*_*",
     "keep *_l1GmtEmulDigis_*_*",
-    "keep *_l1GtEmulDigis_*_*",
     "keep *_l1extraParticles_*_*"
   }		
 }	
@@ -15,7 +14,6 @@ block L1TriggerRECO = {
     "keep *_gtDigis_*_*",
     "keep *_l1GtObjectMap_*_*",
     "keep *_l1GmtEmulDigis_*_*",
-    "keep *_l1GtEmulDigis_*_*",
     "keep *_l1extraParticles_*_*"
   }	
 }	
@@ -26,7 +24,6 @@ block L1TriggerAOD = {
     "keep *_gtDigis_*_*",
     "keep *_l1GtObjectMap_*_*",
     "keep *_l1GmtEmulDigis_*_*",
-    "keep *_l1GtEmulDigis_*_*",
     "keep *_l1extraParticles_*_*"
   }
 }
@@ -42,6 +39,6 @@ block L1TriggerFEVTDIGI = {
     "keep *_l1DttfEmulDigis_*_*",
     "keep *_l1RpcEmulDigis_*_*",
     "keep *_l1GmtEmulDigis_*_*",
-    "keep *_l1GtEmulDigis_*_*"
+    "keep *_gtDigis_*_*"
   }		
 }	

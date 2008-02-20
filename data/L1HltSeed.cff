@@ -18,7 +18,7 @@ replace gtDigis.UnpackBxInEvent = 1
 module gctDigis = l1GctHwDigis from "EventFilter/GctRawToDigi/data/l1GctHwDigis.cfi"
 replace gctDigis.inputLabel = rawDataCollector
 
-module l1GtObjectMap = l1GtEmulDigis from "L1Trigger/GlobalTrigger/data/l1GtEmulDigis.cfi"
+module l1GtObjectMap = gtDigis from "L1Trigger/GlobalTrigger/data/gtDigis.cfi"
 replace l1GtObjectMap.GmtInputTag = gtDigis
 replace l1GtObjectMap.GctInputTag = gctDigis
 replace l1GtObjectMap.ProduceL1GtDaqRecord = false
