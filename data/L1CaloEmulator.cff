@@ -1,8 +1,8 @@
 
 # RCT
-include "L1Trigger/RegionalCaloTrigger/data/l1RctEmulDigis.cfi"
+include "L1Trigger/RegionalCaloTrigger/data/rctDigis.cfi"
  
 # GCT
-include "L1Trigger/GlobalCaloTrigger/data/l1GctEmulDigis.cfi"
+include "L1Trigger/GlobalCaloTrigger/data/gctDigis.cfi"
 
-sequence L1CaloEmulator = { l1RctEmulDigis, l1GctEmulDigis }
+sequence L1CaloEmulator = { rctDigis, gctDigis }

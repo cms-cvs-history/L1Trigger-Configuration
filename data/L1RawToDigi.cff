@@ -1,7 +1,7 @@
 
 # CSC TF
-module l1CscTfEmulDigis = csctfunpacker from "EventFilter/CSCTFRawToDigi/data/csctfunpacker.cfi"
-replace l1CscTfEmulDigis.producer = rawDataCollector
+module csctfDigis = csctfunpacker from "EventFilter/CSCTFRawToDigi/data/csctfunpacker.cfi"
+replace csctfDigis.producer = rawDataCollector
 
 # DT TF ???
 module l1DtTfEmulDigis = dttfunpacker from "EventFilter/DTTFRawToDigi/data/dttfunpacker.cfi"
@@ -10,11 +10,11 @@ module l1DtTfEmulDigis = dttfunpacker from "EventFilter/DTTFRawToDigi/data/dttfu
 # RPC ???
 
 # RCT/GCT
-module l1GctEmulDigis = l1GctHwDigis from "EventFilter/GctRawToDigi/data/l1GctHwDigis.cfi"
-replace l1GctEmulDigis.inputLabel = rawDataCollector
+module gctDigis = l1GctHwDigis from "EventFilter/GctRawToDigi/data/l1GctHwDigis.cfi"
+replace gctDigis.inputLabel = rawDataCollector
 
 # GMT/GT
-module l1GmtEmulDigis = l1GtUnpack from "EventFilter/L1GlobalTriggerRawToDigi/data/l1GtUnpack.cfi"
-replace l1GmtEmulDigis.DaqGtInputTag = rawDataCollector
+module gmtDigis = l1GtUnpack from "EventFilter/L1GlobalTriggerRawToDigi/data/l1GtUnpack.cfi"
+replace gmtDigis.DaqGtInputTag = rawDataCollector
 
-sequence L1RawToDigi = { l1CscTfEmulDigis & l1DtTfEmulDigis & l1GctEmulDigis & l1GmtEmulDigis }
+sequence L1RawToDigi = { csctfDigis & l1DtTfEmulDigis & gctDigis & gmtDigis }

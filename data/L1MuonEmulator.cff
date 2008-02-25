@@ -1,24 +1,24 @@
 
 # DT Trigger
 include "Geometry/DTGeometry/data/dtGeometry.cfi"
-include "L1Trigger/DTTrigger/data/l1DTTPGEmulDigis.cfi"
-include "L1Trigger/DTTrackFinder/data/l1DttfEmulDigis.cfi"
+include "L1Trigger/DTTrigger/data/dtTriggerPrimitiveDigis.cfi"
+include "L1Trigger/DTTrackFinder/data/dttfDigis.cfi"
 
 # CSC Trigger
 include "Geometry/CSCGeometry/data/cscGeometry.cfi"
 include "L1Trigger/CSCCommonTrigger/data/CSCCommonTrigger.cfi"
-include "L1Trigger/CSCTriggerPrimitives/data/l1CscTpgEmulDigis.cfi"
-include "L1Trigger/CSCTrackFinder/data/l1CscTfTrackEmulDigis.cfi"
-include "L1Trigger/CSCTrackFinder/data/l1CscTfEmulDigis.cfi"
+include "L1Trigger/CSCTriggerPrimitives/data/cscTriggerPrimitiveDigis.cfi"
+include "L1Trigger/CSCTrackFinder/data/csctfTrackDigis.cfi"
+include "L1Trigger/CSCTrackFinder/data/csctfDigis.cfi"
 
 # RPC Trigger
 include "Geometry/RPCGeometry/data/rpcGeometry.cfi"
-include "L1Trigger/RPCTrigger/data/l1RpcEmulDigis.cfi"
+include "L1Trigger/RPCTrigger/data/rpcTriggerDigis.cfi"
 
 # Global Muon Trigger
-include "L1Trigger/GlobalMuonTrigger/data/l1GmtEmulDigis.cfi"
+include "L1Trigger/GlobalMuonTrigger/data/gmtDigis.cfi"
 
-sequence L1MuonTriggerPrimitives = { l1CscTpgEmulDigis, l1DTTPGEmulDigis }
-sequence L1MuonTrackFinders = { l1CscTfTrackEmulDigis, l1CscTfEmulDigis, l1DttfEmulDigis }
-sequence L1MuonEmulator = { L1MuonTriggerPrimitives, L1MuonTrackFinders, l1RpcEmulDigis, l1GmtEmulDigis }
+sequence L1MuonTriggerPrimitives = { cscTriggerPrimitiveDigis, dtTriggerPrimitiveDigis }
+sequence L1MuonTrackFinders = { csctfTrackDigis, csctfDigis, dttfDigis }
+sequence L1MuonEmulator = { L1MuonTriggerPrimitives, L1MuonTrackFinders, rpcTriggerDigis, gmtDigis }
 

@@ -3,7 +3,7 @@ block L1TriggerFEVT = {
   untracked vstring outputCommands = {
     "keep *_gtDigis_*_*",
     "keep *_l1GtObjectMap_*_*",
-    "keep *_l1GmtEmulDigis_*_*",
+    "keep *_gmtDigis_*_*",
     "keep *_l1extraParticles_*_*"
   }		
 }	
@@ -13,7 +13,7 @@ block L1TriggerRECO = {
   untracked vstring outputCommands = {
     "keep *_gtDigis_*_*",
     "keep *_l1GtObjectMap_*_*",
-    "keep *_l1GmtEmulDigis_*_*",
+    "keep *_gmtDigis_*_*",
     "keep *_l1extraParticles_*_*"
   }	
 }	
@@ -23,22 +23,22 @@ block L1TriggerAOD = {
   untracked vstring outputCommands = {
     "keep *_gtDigis_*_*",
     "keep *_l1GtObjectMap_*_*",
-    "keep *_l1GmtEmulDigis_*_*",
+    "keep *_gmtDigis_*_*",
     "keep *_l1extraParticles_*_*"
   }
 }
 
 block L1TriggerFEVTDIGI = {
   untracked vstring outputCommands = {
-    "keep *_l1RctEmulDigis_*_*",
-    "keep *_l1GctEmulDigis_*_*",
-    "keep *_l1CscTpgEmulDigis_*_*",
+    "keep *_rctDigis_*_*",
+    "keep *_gctDigis_*_*",
+    "keep *_cscTriggerPrimitiveDigis_*_*",
     "keep *_l1CscTfTrackEmulDigis_*_*",
-    "keep *_l1CscTfEmulDigis_*_*",
-    "keep *_l1DTTPGEmulDigis_*_*",
-    "keep *_l1DttfEmulDigis_*_*",
-    "keep *_l1RpcEmulDigis_*_*",
-    "keep *_l1GmtEmulDigis_*_*",
+    "keep *_csctfDigis_*_*",
+    "keep *_dtTriggerPrimitiveDigis_*_*",
+    "keep *_dttfDigis_*_*",
+    "keep *_rpcTriggerDigis_*_*",
+    "keep *_gmtDigis_*_*",
     "keep *_gtDigis_*_*"
   }		
 }	
