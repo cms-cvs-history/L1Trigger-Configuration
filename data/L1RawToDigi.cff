@@ -1,20 +1,29 @@
 
-# CSC TF
+// Setup
+include "L1TriggerConfig/L1ScalesProducers/data/L1MuTriggerScalesConfig.cff"
+include "L1TriggerConfig/L1ScalesProducers/data/L1MuGMTScalesConfig.cff"
+include "L1TriggerConfig/GctConfigProducers/data/L1GctConfig.cff"
+include "L1TriggerConfig/L1GtConfigProducers/data/L1GtConfig.cff"
+include "L1TriggerConfig/GMTConfigProducers/data/L1MuGMTParametersConfig.cff"
+
+// CSC TF
 module csctfDigis = csctfunpacker from "EventFilter/CSCTFRawToDigi/data/csctfunpacker.cfi"
 replace csctfDigis.producer = rawDataCollector
 
-# DT TF ???
-module l1DtTfEmulDigis = dttfunpacker from "EventFilter/DTTFRawToDigi/data/dttfunpacker.cfi"
-# no InputTag parameter - hardcoded? getByType?
+// DT TF
+module dttfDigis = dttfunpacker from "EventFilter/DTTFRawToDigi/data/dttfunpacker.cfi"
+replace dttfDigis.DTTF_FED_Source = rawDataCollector
 
-# RPC ???
-
-# RCT/GCT
+// GCT
 module gctDigis = l1GctHwDigis from "EventFilter/GctRawToDigi/data/l1GctHwDigis.cfi"
 replace gctDigis.inputLabel = rawDataCollector
 
-# GMT/GT
-module gmtDigis = l1GtUnpack from "EventFilter/L1GlobalTriggerRawToDigi/data/l1GtUnpack.cfi"
-replace gmtDigis.DaqGtInputTag = rawDataCollector
+// GT
+module gtDigis = l1GtUnpack from "EventFilter/L1GlobalTriggerRawToDigi/data/l1GtUnpack.cfi"
+replace gtDigis.DaqGtInputTag = rawDataCollector
 
-sequence L1RawToDigi = { csctfDigis & l1DtTfEmulDigis & gctDigis & gmtDigis }
+include "EventFilter/L1GlobalTriggerRawToDigi/data/l1GtRecord.cfi"
+
+sequence gtRecords = { gtDigis, l1GtRecord }
+
+sequence L1RawToDigi = { csctfDigis & dttfDigis & gctDigis & gtRecords }
