@@ -12,6 +12,7 @@
   include "L1TriggerConfig/L1CSCTPConfigProducers/data/L1CSCTriggerPrimitivesConfig.cff"
   include "L1TriggerConfig/CSCTFConfigProducers/data/L1CSCTFConfig.cff"
   include "L1TriggerConfig/RPCTriggerConfig/data/RPCPatSource.cfi"
+  include "L1TriggerConfig/RPCTriggerConfig/data/RPCConeSource.cfi"
   include "L1TriggerConfig/GMTConfigProducers/data/L1MuGMTParametersConfig.cff"
   include "L1TriggerConfig/L1ScalesProducers/data/L1MuTriggerScalesConfig.cff"
   include "L1TriggerConfig/L1ScalesProducers/data/L1MuGMTScalesConfig.cff"
