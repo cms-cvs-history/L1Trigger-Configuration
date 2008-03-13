@@ -1,3 +1,6 @@
+  # Dummy records for L1TriggerKey and L1TriggerKeyList
+  include "CondTools/L1Trigger/data/L1TriggerKeyRcdSource.cfi"
+  include "CondTools/L1Trigger/data/L1TriggerKeyListRcdSource.cfi"
 
   # L1 Calo configuration
   include "SimCalorimetry/HcalTrigPrimProducers/data/hcaltpdigi.cff"
