@@ -19,6 +19,7 @@
   include "L1TriggerConfig/RPCTriggerConfig/data/RPCHwConfigSource.cfi"
   include "L1TriggerConfig/GMTConfigProducers/data/L1MuGMTParametersConfig.cff"
   include "L1TriggerConfig/L1ScalesProducers/data/L1MuTriggerScalesConfig.cff"
+  include "L1TriggerConfig/L1ScalesProducers/data/L1MuTriggerPtScaleConfig.cff"
   include "L1TriggerConfig/L1ScalesProducers/data/L1MuGMTScalesConfig.cff"
 
   # L1 GT configuration - not available yet
