@@ -21,6 +21,7 @@ block L1TriggerRECO = {
 # AOD content
 block L1TriggerAOD = {
   untracked vstring outputCommands = {
+    "keep *_gtDigis_*_*",
     "keep *_l1GtRecord_*_*",
     "keep *_l1GtObjectMap_*_*",
     "keep *_l1extraParticles_*_*"
