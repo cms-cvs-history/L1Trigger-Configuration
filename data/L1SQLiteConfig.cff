@@ -1,6 +1,9 @@
 // L1 Emulator configuration from 
 // W Sun, J Brooke
 
+// Use dummy configs for objects not in DB
+include "L1Trigger/Configuration/data/L1DummyConfig.cff"
+
 include "CondCore/DBCommon/data/CondDBCommon.cfi"
 es_source l1pooldb = PoolDBESSource {
     using CondDBCommon

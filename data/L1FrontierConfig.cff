@@ -1,6 +1,9 @@
 // L1 Emulator configuration from Frontier
 // W Sun, J Brooke
 
+// Use dummy configs for objects not in DB
+include "L1Trigger/Configuration/data/L1DummyConfig.cff"
+
 include "CondCore/DBCommon/data/CondDBCommon.cfi"
 es_source l1pooldb = PoolDBESSource {
     using CondDBCommon
@@ -128,6 +131,6 @@ es_source l1pooldb = PoolDBESSource {
     }
 }
 
-replace l1pooldb.connect = "frontier://FrontierPrep/CMS_COND_L1T"
+replace l1pooldb.connect = "frontier://FrontierProd/CMS_COND_L1T"
 
 es_prefer l1pooldb = PoolDBESSource {}
