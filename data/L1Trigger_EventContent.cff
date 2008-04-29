@@ -11,6 +11,7 @@ block L1TriggerFEVT = {
 # RECO content
 block L1TriggerRECO = {
   untracked vstring outputCommands = {
+    "keep *_gtDigis_*_*",
     "keep *_l1GtRecord_*_*",
     "keep *_l1GtObjectMap_*_*",
     "keep *_l1extraParticles_*_*"
@@ -20,6 +21,7 @@ block L1TriggerRECO = {
 # AOD content
 block L1TriggerAOD = {
   untracked vstring outputCommands = {
+    "keep *_gtDigis_*_*",
     "keep *_l1GtRecord_*_*",
     "keep *_l1GtObjectMap_*_*",
     "keep *_l1extraParticles_*_*"
@@ -33,9 +35,11 @@ block L1TriggerFEVTDIGI = {
     "keep *_rpcTriggerDigis_*_*",
     "keep *_rctDigis_*_*",
     "keep *_csctfDigis_*_*",
+    "keep *_csctfTrackDigis_*_*",
     "keep *_dttfDigis_*_*",
     "keep *_gctDigis_*_*",
     "keep *_gmtDigis_*_*",
     "keep *_gtDigis_*_*"
   }		
 }	
+
