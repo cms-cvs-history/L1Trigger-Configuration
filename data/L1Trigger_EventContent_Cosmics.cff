@@ -10,7 +10,7 @@ block L1TriggerFEVT = {
     "keep *_dttfDigis_*_*",
     "keep *_gctDigis_*_*",
     "keep *_gmtDigis_*_*",
-    "keep *_gtDigis_*_*"
+    "keep *_gtDigis_*_*",
     "keep *_valCscTriggerPrimitiveDigis_*_*",
     "keep *_valDtTriggerPrimitiveDigis_*_*",
     "keep *_valRpcTriggerDigis_*_*",
@@ -24,7 +24,8 @@ block L1TriggerFEVT = {
     "keep *_gtDigis_*_*",
     "keep *_l1GtRecord_*_*",
     "keep *_l1GtObjectMap_*_*",
-    "keep *_l1extraParticles_*_*"
+    "keep *_l1extraParticles_*_*",
+    "keep *_l1compare_*_*"
   }		
 }	
 
@@ -40,7 +41,7 @@ block L1TriggerRECO = {
     "keep *_dttfDigis_*_*",
     "keep *_gctDigis_*_*",
     "keep *_gmtDigis_*_*",
-    "keep *_gtDigis_*_*"
+    "keep *_gtDigis_*_*",
     "keep *_valCscTriggerPrimitiveDigis_*_*",
     "keep *_valDtTriggerPrimitiveDigis_*_*",
     "keep *_valRpcTriggerDigis_*_*",
@@ -54,7 +55,8 @@ block L1TriggerRECO = {
     "keep *_gtDigis_*_*",
     "keep *_l1GtRecord_*_*",
     "keep *_l1GtObjectMap_*_*",
-    "keep *_l1extraParticles_*_*"
+    "keep *_l1extraParticles_*_*",
+    "keep *_l1compare_*_*"
   }	
 }	
 
