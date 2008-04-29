@@ -1,4 +1,4 @@
-// L1 Emulator configuration from DB
+// L1 Emulator configuration from Frontier
 // W Sun, J Brooke
 
 // Use dummy configs for objects not in DB
@@ -131,7 +131,6 @@ es_source l1pooldb = PoolDBESSource {
     }
 }
 
-replace l1pooldb.connect = "oracle://cms_orcoff_prod/CMS_COND_L1T"
-replace l1pooldb.DBParameters.authenticationPath = "/afs/cern.ch/cms/DB/conddb"
+replace l1pooldb.connect = "frontier://FrontierProd/CMS_COND_L1T"
 
 es_prefer l1pooldb = PoolDBESSource {}
