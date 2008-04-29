@@ -1,21 +1,134 @@
 // L1 Emulator configuration from DB
 // W Sun, J Brooke
 
+include "CondCore/DBCommon/data/CondDBCommon.cfi"
 es_source l1pooldb = PoolDBESSource {
-  string connect = "oracle://cms_orcoff_prep/CMS_COND_L1T"
-  PSet DBParameters = {
-    untracked string authenticationPath="/afs/cern.ch/cms/DB/conddb"
-    untracked int32 messageLevel=0
-    untracked int32 connectionTimeOut = 0
-    untracked int32 connectionRetrialPeriod = 10
-    untracked int32 connectionRetrialTimeOut = 60
-    untracked bool enableConnectionSharing = true
-    untracked bool enableReadOnlySessionOnUpdateConnection = false
-    untracked bool enablePoolAutomaticCleanUp = false
-    untracked int32 idleConnectionCleanupPeriod = 10
-  }
-  VPSet toGet = {}
+    using CondDBCommon
+    VPSet toGet = {
+        {
+            string record = "L1JetEtScaleRcd"
+            string type = "L1CaloEtScale"
+            string tag = "L1JetEtScale_CRUZET_hlt"
+        },
+        {
+            string record = "L1EmEtScaleRcd"
+            string type = "L1CaloEtScale"
+            string tag = "L1EmEtScale_CRUZET_hlt"
+        },
+        {
+            string record = "L1CSCTPParametersRcd"
+            string type = "L1CSCTPParameters"
+            string tag = "L1CSCTPParameters_CRUZET_hlt"
+        },
+        {
+            string record = "L1MuDTEtaPatternLutRcd"
+            string type = "L1MuDTEtaPatternLut"
+            string tag = "L1MuDTEtaPatternLut_CRUZET_hlt"
+        },
+        {
+            string record = "L1MuDTExtLutRcd"
+            string type = "L1MuDTExtLut"
+            string tag = "L1MuDTExtLut_CRUZET_hlt"
+        },
+        {
+            string record = "L1MuDTPhiLutRcd"
+            string type = "L1MuDTPhiLut"
+            string tag = "L1MuDTPhiLut_CRUZET_hlt"
+        },
+        {
+            string record = "L1MuDTPtaLutRcd"
+            string type = "L1MuDTPtaLut"
+            string tag = "L1MuDTPtaLut_CRUZET_hlt"
+        },
+        {
+            string record = "L1MuDTQualPatternLutRcd"
+            string type = "L1MuDTQualPatternLut"
+            string tag = "L1MuDTQualPatternLut_CRUZET_hlt"
+        },
+        {
+            string record = "L1MuGMTParametersRcd"
+            string type = "L1MuGMTParameters"
+            string tag = "L1MuGMTParameters_CRUZET_hlt"
+        },
+        {
+            string record = "L1RCTParametersRcd"
+            string type = "L1RCTParameters"
+            string tag = "L1RCTParameters_CRUZET_hlt"
+        },
+        {
+            string record = "L1GctJetFinderParamsRcd"
+            string type = "L1GctJetFinderParams"
+            string tag = "L1GctJetFinderParams_CRUZET_hlt"
+        },
+        {
+            string record = "L1GctJetCalibFunRcd"
+            string type = "L1GctJetEtCalibrationFunction"
+            string tag = "L1GctJetEtCalibrationFunction_CRUZET_hlt"
+        },
+        {
+            string record = "L1GctJetCounterNegativeEtaRcd"
+            string type = "L1GctJetCounterSetup"
+            string tag = "L1GctJetCounterNegativeEta_CRUZET_hlt"
+        },
+        {
+            string record = "L1GctJetCounterPositiveEtaRcd"
+            string type = "L1GctJetCounterSetup"
+            string tag = "L1GctJetCounterPositiveEta_CRUZET_hlt"
+        },
+        {
+            string record = "L1GtBoardMapsRcd"
+            string type = "L1GtBoardMaps"
+            string tag = "L1GtBoardMaps_CRUZET_hlt"
+        },
+        {
+            string record = "L1GtParametersRcd"
+            string type = "L1GtParameters"
+            string tag = "L1GtParameters_CRUZET_hlt"
+        },
+        {
+            string record = "L1GtPrescaleFactorsRcd"
+            string type = "L1GtPrescaleFactors"
+            string tag = "L1GtPrescaleFactors_CRUZET_hlt"
+        },
+        {
+            string record = "L1GctJetCounterNegativeEtaRcd"
+            string type = "L1GctJetCounterSetup"
+            string tag = "L1GctJetCounterNegativeEta_CRUZET_hlt"
+        },
+        {
+            string record = "L1GctJetCounterPositiveEtaRcd"
+            string type = "L1GctJetCounterSetup"
+            string tag = "L1GctJetCounterPositiveEta_CRUZET_hlt"
+        },
+        {
+            string record = "L1GtBoardMapsRcd"
+            string type = "L1GtBoardMaps"
+            string tag = "L1GtBoardMaps_CRUZET_hlt"
+        },
+        {
+            string record = "L1GtParametersRcd"
+            string type = "L1GtParameters"
+            string tag = "L1GtParameters_CRUZET_hlt"
+        },
+        {
+            string record = "L1GtPrescaleFactorsRcd"
+            string type = "L1GtPrescaleFactors"
+            string tag = "L1GtPrescaleFactors_CRUZET_hlt"
+        },
+        {
+            string record = "L1GtStableParametersRcd"
+            string type = "L1GtStableParameters"
+            string tag = "L1GtStableParameters_CRUZET_hlt"
+        },
+        {
+            string record = "L1GtTriggerMaskRcd"
+            string type = "L1GtTriggerMask"
+            string tag = "L1GtTriggerMask_CRUZET_hlt"
+        }
+    }
 }
-include "L1SubsystemParams.cfi"
-replace pooldb.toGet += L1SubsystemParams.recordInfo
-es_prefer pooldb = PoolDBESSource {}
+
+replace l1pooldb.connect = "oracle://cms_orcoff_prep/CMS_COND_L1T"
+replace l1pooldb.DBParameters.authenticationPath = "/afs/cern.ch/cms/DB/conddb"
+
+es_prefer l1pooldb = PoolDBESSource {}
