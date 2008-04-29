@@ -35,6 +35,7 @@ block L1TriggerFEVTDIGI = {
     "keep *_rpcTriggerDigis_*_*",
     "keep *_rctDigis_*_*",
     "keep *_csctfDigis_*_*",
+    "keep *_csctfTrackDigis_*_*",
     "keep *_dttfDigis_*_*",
     "keep *_gctDigis_*_*",
     "keep *_gmtDigis_*_*",
@@ -42,28 +43,3 @@ block L1TriggerFEVTDIGI = {
   }		
 }	
 
-block L1TriggerFEVTVALDIGI = {
-  untracked vstring outputCommands = {
-    "keep *_ecalTriggerPrimitiveEmulDigis_*_*",
-    "keep *_hcalTriggerPrimitiveEmulDigis_*_*",
-    "keep *_cscTriggerPrimitiveDigis_*_*",
-    "keep *_cscTriggerPrimitiveEmulDigis_*_*",
-    "keep *_dtTriggerPrimitiveDigis_*_*",
-    "keep *_dtTriggerPrimitiveEmulDigis_*_*",
-    "keep *_rpcTriggerDigis_*_*",
-    "keep *_rpcTriggerEmulDigis_*_*",
-    "keep *_rctDigis_*_*",
-    "keep *_rctEmulDigis_*_*",
-    "keep *_csctfDigis_*_*",
-    "keep *_csctfEmulDigis_*_*",
-    "keep *_dttfDigis_*_*",
-    "keep *_dttfEmulDigis_*_*",
-    "keep *_gctDigis_*_*",
-    "keep *_gctEmulDigis_*_*",
-    "keep *_gmtDigis_*_*",
-    "keep *_gmtEmulDigis_*_*",
-    "keep *_gtDigis_*_*",
-    "keep *_gtEmulDigis_*_*",
-    "keep *_l1compare_*_*"
-  }		
-}	
