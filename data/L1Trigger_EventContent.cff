@@ -30,6 +30,16 @@ block L1TriggerAOD = {
 
 block L1TriggerFEVTDIGI = {
   untracked vstring outputCommands = {
+    "keep *_simCscTriggerPrimitiveDigis_*_*",
+    "keep *_simDtTriggerPrimitiveDigis_*_*",
+    "keep *_simRpcTriggerDigis_*_*",
+    "keep *_simRctDigis_*_*",
+    "keep *_simCsctfDigis_*_*",
+    "keep *_simCsctfTrackDigis_*_*",
+    "keep *_simDttfDigis_*_*",
+    "keep *_simGctDigis_*_*",
+    "keep *_simGmtDigis_*_*",
+    "keep *_simGtDigis_*_*"
     "keep *_cscTriggerPrimitiveDigis_*_*",
     "keep *_dtTriggerPrimitiveDigis_*_*",
     "keep *_rpcTriggerDigis_*_*",
