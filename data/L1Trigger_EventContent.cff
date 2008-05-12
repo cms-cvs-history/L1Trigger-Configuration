@@ -39,7 +39,7 @@ block L1TriggerFEVTDIGI = {
     "keep *_simDttfDigis_*_*",
     "keep *_simGctDigis_*_*",
     "keep *_simGmtDigis_*_*",
-    "keep *_simGtDigis_*_*"
+    "keep *_simGtDigis_*_*",
     "keep *_cscTriggerPrimitiveDigis_*_*",
     "keep *_dtTriggerPrimitiveDigis_*_*",
     "keep *_rpcTriggerDigis_*_*",
