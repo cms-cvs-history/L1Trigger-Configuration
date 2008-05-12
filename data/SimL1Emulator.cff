@@ -1,0 +1,85 @@
+# L1 Emulator sequence for simulation use-case
+# Jim Brooke, 24 April 2008
+
+# Emulator configuration
+include "L1Trigger/Configuration/data/L1Config.cff"
+
+
+# RCT emulator
+module simRctDigis = rctDigis from "L1Trigger/RegionalCaloTrigger/data/rctDigis.cfi"
+replace simRctDigis.ecalDigisLabel = simEcalTriggerPrimitiveDigis
+replace simRctDigis.hcalDigisLabel = simHcalTriggerPrimitiveDigis
+
+ 
+# GCT emulator
+module simGctDigis = gctDigis from "L1Trigger/GlobalCaloTrigger/data/gctDigis.cfi"
+replace simGctDigis.inputLabel = simRctDigis
+
+# DT Trigger emulator
+include "Geometry/DTGeometry/data/dtGeometry.cfi"
+module simDtTriggerPrimitiveDigis = dtTriggerPrimitiveDigis from "L1Trigger/DTTrigger/data/dtTriggerPrimitiveDigis.cfi"
+replace simDtTriggerPrimitiveDigis.digiTag = simMuonDTDigis
+
+
+# DT Track Finder emulator
+module simDttfDigis = dttfDigis from "L1Trigger/DTTrackFinder/data/dttfDigis.cfi"
+replace simDttfDigis.DTDigi_Source = simDtTriggerPrimitiveDigis
+replace simDttfDigis.CSCStub_Source = simCsctfTrackDigis
+
+
+# CSC Trigger emulator
+include "Geometry/CSCGeometry/data/cscGeometry.cfi"
+include "L1Trigger/CSCCommonTrigger/data/CSCCommonTrigger.cfi"
+module simCscTriggerPrimitiveDigis = cscTriggerPrimitiveDigis from "L1Trigger/CSCTriggerPrimitives/data/cscTriggerPrimitiveDigis.cfi"
+replace simCscTriggerPrimitiveDigis.CSCComparatorDigiProducer = simMuonCSCDigis:MuonCSCComparatorDigi
+replace simCscTriggerPrimitiveDigis.CSCWireDigiProducer = simMuonCSCDigis:MuonCSCWireDigi
+
+
+# CSC Track Finder emulator
+module simCsctfTrackDigis = csctfTrackDigis from "L1Trigger/CSCTrackFinder/data/csctfTrackDigis.cfi"
+replace simCsctfTrackDigis.SectorReceiverInput = simCscTriggerPrimitiveDigis:MPCSORTED
+replace simCsctfTrackDigis.DTproducer = simDtTriggerPrimitiveDigis
+
+module simCsctfDigis = csctfDigis from "L1Trigger/CSCTrackFinder/data/csctfDigis.cfi"
+replace simCsctfDigis.CSCTrackProducer = simCsctfTrackDigis
+
+# RPC Trigger emulator
+include "Geometry/RPCGeometry/data/rpcGeometry.cfi"
+module simRpcTriggerDigis = rpcTriggerDigis from "L1Trigger/RPCTrigger/data/rpcTriggerDigis.cfi"
+replace simRpcTriggerDigis.label = "simMuonRPCDigis"
+
+
+# Global Muon Trigger emulator
+module simGmtDigis = gmtDigis from "L1Trigger/GlobalMuonTrigger/data/gmtDigis.cfi"
+replace simGmtDigis.DTCandidates = simDttfDigis:DT
+replace simGmtDigis.CSCCandidates = simCsctfDigis:CSC
+replace simGmtDigis.RPCbCandidates = simRpcTriggerDigis:RPCb
+replace simGmtDigis.RPCfCandidates = simRpcTriggerDigis:RPCf
+replace simGmtDigis.MipIsoData = simRctDigis
+
+# Global Trigger emulator
+module simGtDigis = gtDigis from "L1Trigger/GlobalTrigger/data/gtDigis.cfi"
+replace simGtDigis.GmtInputTag = simGmtDigis
+replace simGtDigis.GctInputTag = simGctDigis
+replace simGtDigis.TechnicalTriggersInputTag = simTechTrigDigis
+
+
+# Global Trigger AOD producer
+module simL1GtRecord = l1GtRecord from "EventFilter/L1GlobalTriggerRawToDigi/data/l1GtRecord.cfi"
+replace simL1GtRecord.L1GtReadoutRecordTag = simGtDigis
+
+
+sequence SimL1MuTriggerPrimitives = { simCscTriggerPrimitiveDigis & simDtTriggerPrimitiveDigis }
+sequence SimL1MuTrackFinders = { simCsctfTrackDigis, simCsctfDigis, simDttfDigis }
+
+sequence SimL1Emulator = {
+         simRctDigis,
+         simGctDigis,
+         SimL1MuTriggerPrimitives,
+         SimL1MuTrackFinders,
+         simRpcTriggerDigis,
+         simGmtDigis,
+         simGtDigis,
+         simL1GtRecord
+}
+
