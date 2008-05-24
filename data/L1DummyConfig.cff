@@ -5,7 +5,7 @@
 
   # L1 Calo configuration
   include "SimCalorimetry/HcalTrigPrimProducers/data/hcaltpdigi.cff"
-  include "L1TriggerConfig/RCTConfigProducers/data/L1RCTORCAConfig.cff"
+  include "L1TriggerConfig/RCTConfigProducers/data/L1RCTConfig.cff"
   include "L1TriggerConfig/GctConfigProducers/data/L1GctConfig.cff"
   include "L1TriggerConfig/L1ScalesProducers/data/L1CaloScalesConfig.cff"
   include "L1TriggerConfig/L1GeometryProducers/data/l1CaloGeomConfig.cff"
