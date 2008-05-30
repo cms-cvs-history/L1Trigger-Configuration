@@ -8,6 +8,7 @@
   include "L1TriggerConfig/RCTConfigProducers/data/L1RCTConfig.cff"
   include "L1TriggerConfig/GctConfigProducers/data/L1GctConfig.cff"
   include "L1TriggerConfig/L1ScalesProducers/data/L1CaloScalesConfig.cff"
+  include "L1TriggerConfig/L1ScalesProducers/data/L1CaloInputScalesConfig.cff"
   include "L1TriggerConfig/L1GeometryProducers/data/l1CaloGeomConfig.cff"
 
   # L1 Muon configuration
