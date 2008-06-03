@@ -20,7 +20,7 @@ block L1TriggerFEVT = {
     "keep *_valDttfDigis_*_*",
     "keep *_valGctDigis_*_*",
     "keep *_valGmtDigis_*_*",
-    "keep *_valGtDigis_*_*"
+    "keep *_valGtDigis_*_*",
     "keep *_gtDigis_*_*",
     "keep *_l1GtRecord_*_*",
     "keep *_l1GtObjectMap_*_*",
@@ -81,7 +81,7 @@ block L1TriggerFEVTDIGI = {
     "keep *_dttfDigis_*_*",
     "keep *_gctDigis_*_*",
     "keep *_gmtDigis_*_*",
-    "keep *_gtDigis_*_*"
+    "keep *_gtDigis_*_*",
     "keep *_valCscTriggerPrimitiveDigis_*_*",
     "keep *_valDtTriggerPrimitiveDigis_*_*",
     "keep *_valRpcTriggerDigis_*_*",
