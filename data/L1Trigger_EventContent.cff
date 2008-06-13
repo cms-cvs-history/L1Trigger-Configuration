@@ -1,5 +1,5 @@
 # Full Event content 
-block L1TriggerFEVT = {
+block L1TriggerRAW = {
   untracked vstring outputCommands = {
     "keep *_gtDigis_*_*",
     "keep *_l1GtRecord_*_*",
@@ -28,7 +28,7 @@ block L1TriggerAOD = {
   }
 }
 
-block L1TriggerFEVTDIGI = {
+block L1TriggerFEVTDEBUG = {
   untracked vstring outputCommands = {
     "keep *_simCscTriggerPrimitiveDigis_*_*",
     "keep *_simDtTriggerPrimitiveDigis_*_*",
