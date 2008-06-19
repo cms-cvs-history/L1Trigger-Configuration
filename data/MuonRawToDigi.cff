@@ -3,7 +3,6 @@ include "CondCore/DBCommon/data/CondDBSetup.cfi"
 
 #--- Geometry Setup ---#
 include "Geometry/CMSCommonData/data/cmsIdealGeometryXML.cfi"
-include "MagneticField/Engine/data/volumeBasedMagneticField.cfi"
 include "Geometry/DTGeometry/data/dtGeometry.cfi"
 include "Geometry/RPCGeometry/data/rpcGeometry.cfi"
 
