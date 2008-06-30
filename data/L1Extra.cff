@@ -1,7 +1,0 @@
-
-include "L1Trigger/L1ExtraFromDigis/data/l1extraParticles.cff"
-
-// replaced with GT emulator for standard production
-//include "L1Trigger/L1ExtraFromDigis/data/l1extraParticleMap.cfi"
-
-sequence L1Extra = { l1extraParticles }
