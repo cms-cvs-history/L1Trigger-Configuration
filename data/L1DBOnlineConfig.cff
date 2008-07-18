@@ -1,4 +1,4 @@
-// L1 Emulator configuration from DB
+// L1 Emulator configuration from Frontier
 // W Sun, J Brooke
 
 // Use dummy configs for objects not in DB
@@ -129,8 +129,11 @@ es_source l1pooldb = PoolDBESSource {
             string tag = "L1GtTriggerMask_CRUZET_hlt"
         }
     }
+
+  untracked bool siteLocalConfig = false
+
 }
 
-replace l1pooldb.connect = "frontier://cmsfrontier.cern.ch:8000/FrontierProd/CMS_COND_20X_L1T"
+replace l1pooldb.connect = "frontier://(proxyurl=http://localhost:3128)(serverurl=http://frontier1.cms:8000/FrontierOnProd)(serverurl=http://frontier2.cms:8000/FrontierOnProd)(retrieve-ziplevel=0)/CMS_COND_20X_L1T"
 
 es_prefer l1pooldb = PoolDBESSource {}
