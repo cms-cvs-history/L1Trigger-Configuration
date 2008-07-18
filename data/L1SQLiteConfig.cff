@@ -1,4 +1,4 @@
-// L1 Emulator configuration from DB
+// L1 Emulator configuration from 
 // W Sun, J Brooke
 
 // Use dummy configs for objects not in DB
@@ -131,6 +131,6 @@ es_source l1pooldb = PoolDBESSource {
     }
 }
 
-replace l1pooldb.connect = "frontier://cmsfrontier.cern.ch:8000/FrontierProd/CMS_COND_20X_L1T"
+replace l1pooldb.connect = "sqlite_file:l1config.db"
 
 es_prefer l1pooldb = PoolDBESSource {}
