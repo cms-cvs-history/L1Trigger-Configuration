@@ -51,7 +51,7 @@ block L1TriggerRECO = {
     "keep *_valDttfDigis_*_*",
     "keep *_valGctDigis_*_*",
     "keep *_valGmtDigis_*_*",
-    "keep *_valGtDigis_*_*"
+    "keep *_valGtDigis_*_*",
     "keep *_gtDigis_*_*",
     "keep *_l1GtRecord_*_*",
     "keep *_l1GtObjectMap_*_*",
