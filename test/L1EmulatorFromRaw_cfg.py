@@ -41,12 +41,13 @@ process.load('L1Trigger.Configuration.L1DummyConfig_cff')
 #process.load('L1Trigger.Configuration.L1CruzetConfig_cff')
 
 # Example for what collections are needed to re-run HLT
-process.load('L1Trigger.Configuration.L1Trigger_EventContent_cff')
-process.L1TriggerFEVTDEBUG.outputCommands.append(
-    'keep FEDRawDataCollection_*_*_*'
-)
 process.out = cms.OutputModule("PoolOutputModule",
-    process.L1TriggerFEVTDEBUG,
+    outputCommands = cms.untracked.vstring(
+        'keep FEDRawDataCollection_*_*_L1',
+        'keep *_simGtDigis_*_L1',
+        'keep *_simGmtDigis_*_L1',
+        'keep *_simGctDigis_*_L1'
+    ),
     fileName = cms.untracked.string("rerunL1.root")
 )
 
