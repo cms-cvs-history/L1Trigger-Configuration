@@ -34,7 +34,21 @@ process.simCscTriggerPrimitiveDigis.CSCWireDigiProducer = cms.InputTag("muonCSCD
 process.simRpcTriggerDigis.label = 'muonRPCDigis'
 
 # L1 configuration
-process.load("L1Trigger.Configuration.L1DummyConfig_cff")
+process.load('L1Trigger.Configuration.L1DummyConfig_cff')
+
+# optional trigger configurations
+#process.load('L1Trigger.Configuration.L1StartupConfig_cff')
+#process.load('L1Trigger.Configuration.L1CruzetConfig_cff')
+
+# Example for what collections are needed to re-run HLT
+process.load('L1Trigger.Configuration.L1Trigger_EventContent_cff')
+process.L1TriggerFEVTDEBUG.outputCommands.append(
+    'keep FEDRawDataCollection_*_*_*'
+)
+process.out = cms.OutputModule("PoolOutputModule",
+    process.L1TriggerFEVTDEBUG,
+    fileName = cms.untracked.string("rerunL1.root")
+)
 
 process.p = cms.Path(
     process.ecalDigis
@@ -46,3 +60,4 @@ process.p = cms.Path(
     *process.SimL1Emulator
 )
 
+process.o = cms.EndPath( process.out )
