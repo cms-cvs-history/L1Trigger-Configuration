@@ -3,8 +3,12 @@
 #
 # V M Ghete 2009-02-27
 
-###################### user choices ######################
+import FWCore.ParameterSet.Config as cms
 
+# process
+process = cms.Process('L1')
+
+###################### user choices ######################
 
 # choose the type of sample used (True for RelVal, False for data)
 useRelValSample = True 
@@ -15,17 +19,15 @@ useGlobalTag = 'IDEAL'
 #useGlobalTag='STARTUP'
 
 # explicit choice of the L1 menu - available choices:
-l1Menu = '8E29'
-#l1Menu = '1E31'
-#l1Menu == 'CRAFT2008'
+l1Menu = 'L1Menu_Commissioning2009_v0'
+#l1Menu = 'L1Menu_MC2009_v0'
+#l1Menu = 'L1Menu_startup2_v4'
+#l1Menu = 'L1Menu_2008MC_2E30'
+#l1Menu = 'myMenu'
+
 
 ###################### end user choices ###################
 
-
-import FWCore.ParameterSet.Config as cms
-
-# process
-process = cms.Process('L1')
 
 # number of events to be processed and source file
 process.maxEvents = cms.untracked.PSet(
@@ -85,32 +87,56 @@ else :
         ])
 
 
-# unpack raw data
-process.load('Configuration.StandardSequences.RawToDigi_cff')
+# add explicitly the CSC, DT, RPC unpackers (not the RawToDigi_cff)
+#process.load('Configuration.StandardSequences.RawToDigi_cff')
+
+import EventFilter.EcalRawToDigiDev.EcalUnpackerData_cfi
+process.ecalDigis = EventFilter.EcalRawToDigiDev.EcalUnpackerData_cfi.ecalEBunpacker.clone()
+
+import EventFilter.HcalRawToDigi.HcalRawToDigi_cfi
+process.hcalDigis = EventFilter.HcalRawToDigi.HcalRawToDigi_cfi.hcalDigis.clone()
+
+import EventFilter.CSCRawToDigi.cscUnpacker_cfi
+process.muonCSCDigis = EventFilter.CSCRawToDigi.cscUnpacker_cfi.muonCSCDigis.clone()
+
+import EventFilter.DTRawToDigi.dtunpacker_cfi
+process.muonDTDigis = EventFilter.DTRawToDigi.dtunpacker_cfi.muonDTDigis.clone()
+
+import EventFilter.RPCRawToDigi.rpcUnpacker_cfi
+process.muonRPCDigis = EventFilter.RPCRawToDigi.rpcUnpacker_cfi.rpcunpacker.clone()
+
+process.muonCSCDigis.InputObjects = 'rawDataCollector'
+process.muonDTDigis.inputLabel = 'rawDataCollector'
+process.muonRPCDigis.InputLabel = 'rawDataCollector'
 
 # run trigger primitive generation on unpacked digis, then central L1
 process.load('L1Trigger.Configuration.CaloTriggerPrimitives_cff')
 process.load('L1Trigger.Configuration.SimL1Emulator_cff')
 
+# set the new input tags after RawToDigi for the TPG producers
+process.simEcalTriggerPrimitiveDigis.Label = 'ecalDigis'
+process.simHcalTriggerPrimitiveDigis.inputLabel = cms.InputTag('hcalDigis')
 #
-#process.simEcalTriggerPrimitiveDigis.Label = 'ecalDigis'
-#process.simHcalTriggerPrimitiveDigis.inputLabel = cms.InputTag('hcalDigis')
-##
-#process.simDtTriggerPrimitiveDigis.digiTag = 'muonDTDigis'
-##
-##process.simCscTriggerPrimitiveDigis.CSCComparatorDigiProducer = cms.InputTag('muonCSCDigis',
-##                                                                             'MuonCSCComparatorDigi')
-##process.simCscTriggerPrimitiveDigis.CSCWireDigiProducer = cms.InputTag('muonCSCDigis',
-##                                                                       'MuonCSCWireDigi')
-##
-#process.simRpcTriggerDigis.label = 'muonRPCDigis'
+process.simDtTriggerPrimitiveDigis.digiTag = 'muonDTDigis'
+#
+process.simCscTriggerPrimitiveDigis.CSCComparatorDigiProducer = cms.InputTag('muonCSCDigis',
+                                                                             'MuonCSCComparatorDigi')
+process.simCscTriggerPrimitiveDigis.CSCWireDigiProducer = cms.InputTag('muonCSCDigis',
+                                                                       'MuonCSCWireDigi')
+#
+process.simRpcTriggerDigis.label = 'muonRPCDigis'
 
 
 # load and configure modules via Global Tag
 # https://twiki.cern.ch/twiki/bin/view/CMS/SWGuideFrontierConditions
 
-process.load('Configuration.StandardSequences.Geometry_cff')
-process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
+# import of standard configurations
+
+process.load('Configuration/StandardSequences/Services_cff')
+process.load('Configuration/StandardSequences/GeometryPilot2_cff')
+process.load('Configuration/StandardSequences/MagneticField_38T_cff')
+process.load('Configuration/StandardSequences/FrontierConditions_GlobalTag_cff')
+process.load('Configuration/EventContent/EventContent_cff')
 
 if useRelValSample == True :
     if useGlobalTag == 'IDEAL':
@@ -128,43 +154,39 @@ else :
 
 # explicit choice of the L1 menu
 
-if l1Menu == '8E29' :
+if l1Menu == 'L1Menu_Commissioning2009_v0' :
     process.load('L1Trigger.Configuration.L1StartupConfig_cff')
     process.load('L1TriggerConfig.L1GtConfigProducers.Luminosity.startup.L1Menu_Commissioning2009_v0_L1T_Scales_20080926_startup_Imp0_Unprescaled_cff')
     
-elif l1Menu == 'CRAFT2008' :
+elif l1Menu == 'L1Menu_startup2_v4' :
     process.load('L1Trigger.Configuration.L1StartupConfig_cff')
     process.load('L1TriggerConfig.L1GtConfigProducers.Luminosity.startup.L1Menu_startup2_v4_L1T_Scales_20080926_startup_Imp0_Unprescaled_cff')
     
-elif l1Menu == '1E31' :
+elif l1Menu == 'L1Menu_MC2009_v0' :
     process.load('L1TriggerConfig.L1GtConfigProducers.Luminosity.lumi1031.L1Menu_MC2009_v0_L1T_Scales_20080922_Imp0_Unprescaled_cff')
+
+elif l1Menu == 'L1Menu_2008MC_2E30' :
+    process.load('L1TriggerConfig.L1GtConfigProducers.Luminosity.lumi1030.L1Menu_2008MC_2E30_Unprescaled_cff')
+
+elif l1Menu == 'myMenu' :
+    #process.load('L1TriggerConfig.L1GtConfigProducers.Luminosity.startup.L1Menu_startup_v3_Unprescaled_cff')
+    #process.load('L1TriggerConfig.L1GtConfigProducers.Luminosity.startup.L1Menu_startup_v4_Unprescaled_cff')
+    #process.load('L1TriggerConfig.L1GtConfigProducers.Luminosity.startup.L1Menu_startup_v5_Unprescaled_cff')
+    #process.load('L1TriggerConfig.L1GtConfigProducers.Luminosity.startup.L1Menu_startup2_v1_Unprescaled_cff')
+    #process.load('L1TriggerConfig.L1GtConfigProducers.Luminosity.startup.L1Menu_startup2_v2_Unprescaled_cff')
+    process.load('L1TriggerConfig.L1GtConfigProducers.Luminosity.startup.L1Menu_startup2_v3_Unprescaled_cff')
 else :
-    print 'No such L1 menu: ', l1menu  
-      
+    print 'No such L1 menu: ', l1Menu  
 
-# Example for what collections are needed to re-run HLT
-process.out = cms.OutputModule('PoolOutputModule',
-    outputCommands=cms.untracked.vstring(
-        #'keep FEDRawDataCollection_*_*_L1',
-        #'keep *_simGtDigis_*_L1',
-        #'keep *_simGmtDigis_*_L1',
-        #'keep *_simGctDigis_*_L1',
-        'keep *_hltGtDigis_*_HLT',
-        'keep *_*_*_L1'
-    ),
-    fileName=cms.untracked.string('L1EmulatorFromRaw.root')
+
+process.p = cms.Path(
+    process.ecalDigis * process.hcalDigis 
+    * process.CaloTriggerPrimitives 
+    * process.muonDTDigis 
+    * process.muonCSCDigis 
+    * process.muonRPCDigis 
+    * process.SimL1Emulator
 )
-
-#process.p = cms.Path(process.ecalDigis 
-#    * process.hcalDigis 
-#    * process.muonDTDigis 
-#    * process.muonCSCDigis 
-#    * process.muonRPCDigis 
-#    * process.CaloTriggerPrimitives 
-#    * process.SimL1Emulator
-#)
-
-process.p = cms.Path(process.SimL1Emulator)
 
 # Message Logger
 process.load('FWCore.MessageService.MessageLogger_cfi')
@@ -189,4 +211,14 @@ process.MessageLogger.cout = cms.untracked.PSet(
     )
 )
 
-process.o = cms.EndPath(process.out)
+# Output definition
+process.output = cms.OutputModule("PoolOutputModule",
+    outputCommands = process.FEVTDEBUGHLTEventContent.outputCommands,
+    fileName = cms.untracked.string('L1EmulatorFromRaw.root'),
+    dataset = cms.untracked.PSet(
+        dataTier = cms.untracked.string("\'GEN-SIM-DIGI-RAW-HLTDEBUG\'"),
+        filterName = cms.untracked.string('')
+    )
+)
+
+process.out_step = cms.EndPath(process.output)
