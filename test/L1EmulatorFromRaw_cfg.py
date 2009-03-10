@@ -31,7 +31,7 @@ l1Menu = 'L1Menu_Commissioning2009_v0'
 
 # number of events to be processed and source file
 process.maxEvents = cms.untracked.PSet(
-    input=cms.untracked.int32(200)
+    input=cms.untracked.int32(50)
 )
 
 readFiles = cms.untracked.vstring()
@@ -87,27 +87,35 @@ else :
         ])
 
 
-# add explicitly the CSC, DT, RPC unpackers (not the RawToDigi_cff)
+# add explicitly the ECAL, HCAL, CSC, DT, RPC unpackers (not the RawToDigi_cff)
 #process.load('Configuration.StandardSequences.RawToDigi_cff')
 
+#
 import EventFilter.EcalRawToDigiDev.EcalUnpackerData_cfi
 process.ecalDigis = EventFilter.EcalRawToDigiDev.EcalUnpackerData_cfi.ecalEBunpacker.clone()
+process.ecalDigis.DoRegional = False
+process.ecalDigis.InputLabel = 'rawDataCollector'
 
+#
 import EventFilter.HcalRawToDigi.HcalRawToDigi_cfi
 process.hcalDigis = EventFilter.HcalRawToDigi.HcalRawToDigi_cfi.hcalDigis.clone()
+process.hcalDigis.InputLabel = 'rawDataCollector'
 
+#
 import EventFilter.CSCRawToDigi.cscUnpacker_cfi
 process.muonCSCDigis = EventFilter.CSCRawToDigi.cscUnpacker_cfi.muonCSCDigis.clone()
+process.muonCSCDigis.InputObjects = 'rawDataCollector'
 
+#
 import EventFilter.DTRawToDigi.dtunpacker_cfi
 process.muonDTDigis = EventFilter.DTRawToDigi.dtunpacker_cfi.muonDTDigis.clone()
+process.muonDTDigis.inputLabel = 'rawDataCollector'
 
+#
 import EventFilter.RPCRawToDigi.rpcUnpacker_cfi
 process.muonRPCDigis = EventFilter.RPCRawToDigi.rpcUnpacker_cfi.rpcunpacker.clone()
-
-process.muonCSCDigis.InputObjects = 'rawDataCollector'
-process.muonDTDigis.inputLabel = 'rawDataCollector'
 process.muonRPCDigis.InputLabel = 'rawDataCollector'
+
 
 # run trigger primitive generation on unpacked digis, then central L1
 process.load('L1Trigger.Configuration.CaloTriggerPrimitives_cff')
@@ -115,7 +123,8 @@ process.load('L1Trigger.Configuration.SimL1Emulator_cff')
 
 # set the new input tags after RawToDigi for the TPG producers
 process.simEcalTriggerPrimitiveDigis.Label = 'ecalDigis'
-process.simHcalTriggerPrimitiveDigis.inputLabel = cms.InputTag('hcalDigis')
+process.simHcalTriggerPrimitiveDigis.inputLabel = cms.VInputTag(cms.InputTag('hcalDigis'), 
+                                                                cms.InputTag('hcalDigis'))
 #
 process.simDtTriggerPrimitiveDigis.digiTag = 'muonDTDigis'
 #
@@ -133,23 +142,25 @@ process.simRpcTriggerDigis.label = 'muonRPCDigis'
 # import of standard configurations
 
 process.load('Configuration/StandardSequences/Services_cff')
-process.load('Configuration/StandardSequences/GeometryPilot2_cff')
+process.load('Configuration/StandardSequences/GeometryIdeal_cff')
 process.load('Configuration/StandardSequences/MagneticField_38T_cff')
 process.load('Configuration/StandardSequences/FrontierConditions_GlobalTag_cff')
 process.load('Configuration/EventContent/EventContent_cff')
 
+
+
 if useRelValSample == True :
     if useGlobalTag == 'IDEAL':
-        process.GlobalTag.globaltag = 'IDEAL_V11::All'
+        process.GlobalTag.globaltag = 'IDEAL_30X::All'
 
     elif useGlobalTag == 'STARTUP':
-        process.GlobalTag.globaltag = 'STARTUP_V8::All'
+        process.GlobalTag.globaltag = 'STARTUP_30X::All'
 
     else :
         print 'Error: Global Tag ', useGlobalTag, ' not defined.'    
 
 else :
-    process.GlobalTag.globaltag = 'CRAFT_ALL_V8::All'
+    process.GlobalTag.globaltag = 'CRAFT_30X::All'
 
 
 # explicit choice of the L1 menu
