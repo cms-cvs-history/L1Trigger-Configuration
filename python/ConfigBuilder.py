@@ -7,6 +7,13 @@ __triggerTable = {
         'L1TriggerConfig/L1GtConfigProducers/Luminosity/startup/L1Menu_Commissioning2009_v0_L1T_Scales_20080926_startup_Imp0_Unprescaled_cff'
     ),
 
+    # L1 conditions and trigger table for the 2009 startup/8E29 menu v2
+    'L1Menu_Commissioning2009_v2:Unprescaled': (
+        'L1Trigger/Configuration/SimL1Emulator_cff',
+        'L1Trigger/Configuration/L1StartupConfig_cff',
+        'L1TriggerConfig/L1GtConfigProducers/Luminosity/startup/L1Menu_Commissioning2009_v2_L1T_Scales_20080926_startup_Imp0_Unprescaled_cff'
+    ),
+
     # L1 conditions and trigger table for the 2009 1E31 menu
     'L1Menu_MC2009_v0:Unprescaled': (
         'L1Trigger/Configuration/SimL1Emulator_cff',
